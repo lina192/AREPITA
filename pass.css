@@ -1,0 +1,144 @@
+/* Reset estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el body */
+body {
+    background-color: #edb97f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #edb97f;
+}
+
+/* El contenedor ocupa toda la página */
+.container {
+    background-color: white;
+    color: #edb97f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 2rem;
+    box-shadow: none; /* Se elimina la sombra para el fondo de página completa */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para el título */
+.container h2 {
+    color: #edb97f;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Estilo del párrafo */
+.container p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Estilos para el formulario */
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.75rem 0;
+    border: 2px solid #edb97f;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+/* Cambio de borde al foco en el input */
+.form-control:focus {
+    border: 2px solid #edb97f;
+}
+
+/* Estilos para los grupos de entrada */
+.input-group {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho máximo para inputs */
+    margin-bottom: 1.25rem;
+}
+
+/* Estilos para el botón */
+.btn {
+    background-color: #edb97f;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #d9a367;
+    transform: translateY(-2px);
+}
+
+/* Mensajes y enlaces */
+#resetMessage {
+    color: #edb97f;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: #edb97f;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #d9a367;
+    text-decoration: underline;
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem;
+    }
+
+    .container h2 {
+        font-size: 1.6rem;
+    }
+
+    .container p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+    }
+}

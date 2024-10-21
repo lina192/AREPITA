@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="user.css">
+    <link rel="icon" href="img/icon.ico">
+    <style>
+        /* Añadimos estilo para campos de solo lectura */
+        input[readonly] {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+        /* Opcional: para desactivar la interacción con el campo */
+        input[readonly] {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- menu -->
+        <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li>
+                            <div class="socials">
+                                <span><</span>
+                                <a href="index.html">Volver</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="">
+                <div class="menu-2">
+                    <ul>
+                    </ul>
+                    <div class="socials">
+                        <div class="tooltip">
+                            <a href="../vista_cliente/carrito2.html">
+                                <div class="social">
+                                    <img src="img/carrito.svg" alt="Carrito">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Carrito de Compras</div>
+                        </div>
+                        <div class="tooltip">
+                            <a href="../vista_cliente/favorito.html">
+                                <div class="social">
+                                    <img src="img/fav.png" alt="Favoritos">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Favoritos</div>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <a href="#" id="profileIcon">
+                                <div class="social">
+                                    <img src="img/user-pregu.png" alt="Salir - Preguntas">
+                                </div>
+                                
+                            </a>
+                            <div class="tooltiptext">Otras Opciones</div>
+                            <div id="profileDropdown" class="profile-dropdown">
+                                <a href="../index.html">Salir</a>
+                                <a href="../ayuda.html">Ayuda</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- fin menu -->
+    </header>
+
+    <section class="profile-section">
+        <h3>Perfil</h3>
+        <form id="profileForm">
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="profileFirstName">Nombre:</label>
+                    <input type="text" id="profileFirstName" placeholder="Nombre" readonly>
+                </div>
+                <div class="form-column">
+                    <label for="profileLastName">Apellido:</label>
+                    <input type="text" id="profileLastName" placeholder="Apellido" readonly>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="profileEmail">Correo Electrónico:</label>
+                    <input type="email" id="profileEmail" placeholder="ejemplo@correo.com" readonly>
+                </div>
+                <div class="form-column">
+                    <label for="profilePhone">Teléfono:</label>
+                    <input type="tel" id="profilePhone" placeholder="(+57) xxx-xxxxxxx" readonly>
+                </div>
+            </div>
+        
+            <br>
+            <button type="button" id="editProfileButton">Editar</button>
+            <button type="button" id="saveChangesButton" style="display: none;">Guardar Cambios</button>
+            <!-- Botón para eliminar la cuenta -->
+            <button type="button" id="deleteAccountButton" style="background-color: #be7f36cf;  color: white;">Eliminar Cuenta</button>
+
+        </form>
+    </section>
+    
+    <footer class="footer container">
+        <img class="logo-2" src="img/logo.png" alt="">
+        <div class="links" >
+            <h4>Epa la Arepa</h4>
+            <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados </p>
+        </div>
+
+        <div class="links" >
+            <h4>¡Síguenos!</h4>
+            <div class="socials">
+                <a href="https://www.facebook.com/epaarepacolombia/">
+                    <div class="social">
+                        <img src="img/s1.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/epalarepa_/">
+                    <div class="social">
+                        <img src="img/s2.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://x.com/epaLarepa">
+                    <div class="social">
+                        <img src="img/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        // Obtener el año actual
+        var currentYear = new Date().getFullYear();
+        // Colocar el año en el elemento con el id "year"
+        document.getElementById("year").textContent = currentYear;
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Función para obtener el valor de una cookie por su nombre
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            const clientId = getCookie('clientId');
+
+            if (!clientId) {
+                alert("ID del cliente no encontrado en las cookies.");
+                return;
+            }
+
+            // Obtener datos del usuario desde la API
+            fetch(`/api/clientes/${clientId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener la información del cliente');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('profileFirstName').value = data.nombre || '';
+                    document.getElementById('profileLastName').value = data.apellido || '';
+                    document.getElementById('profileEmail').value = data.correo || '';
+                    document.getElementById('profilePhone').value = data.telefono || '';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: '¡Hubo un problema!',
+                        text: 'Error al obtener la información del cliente',
+                        icon: 'error',
+                        toast: true,
+                        position: 'top',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                        customClass: {
+                            confirmButton: 'custom-btn',
+                        }
+                    });
+                });
+
+            // Mostrar el menú desplegable de perfil
+            const profileIcon = document.getElementById('profileIcon');
+            const profileDropdown = document.getElementById('profileDropdown');
+
+            profileIcon.addEventListener('click', (event) => {
+                event.preventDefault(); 
+                if (profileDropdown.style.display === 'block') {
+                    profileDropdown.style.display = 'none';
+                } else {
+                    profileDropdown.style.display = 'block';
+                }
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!event.target.closest('#profileIcon') && !event.target.closest('#profileDropdown')) {
+                    if (profileDropdown.style.display === 'block') {
+                        profileDropdown.style.display = 'none';
+                    }
+                }
+            });
+
+            // Manejar el clic en el botón "Editar"
+            document.getElementById('editProfileButton').addEventListener('click', () => {
+                document.getElementById('profileFirstName').removeAttribute('readonly');
+                document.getElementById('profileLastName').removeAttribute('readonly');
+                document.getElementById('profileEmail').removeAttribute('readonly');
+                document.getElementById('profilePhone').removeAttribute('readonly');
+                document.getElementById('editProfileButton').style.display = 'none';
+                document.getElementById('saveChangesButton').style.display = 'inline';
+            });
+
+            // Manejar el clic en el botón "Guardar Cambios"
+            document.getElementById('saveChangesButton').addEventListener('click', () => {
+                const nombre = document.getElementById('profileFirstName').value;
+                const apellido = document.getElementById('profileLastName').value;
+                const correo = document.getElementById('profileEmail').value;
+                const telefono = document.getElementById('profilePhone').value;
+
+                fetch(`/api/clientes/${clientId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nombre, apellido, correo, telefono })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al actualizar la información del cliente');
+                    }
+                    return response.text(); // Cambiado a text() para capturar mensaje de éxito
+                })
+                .then(data => {
+                    Swal.fire({
+                        title: 'Información actualizada',
+                        text: 'Información actualizada con éxito',
+                        icon: 'success',
+                        toast: true,
+                        position: 'top',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                        customClass: {
+                            confirmButton: 'custom-btn',
+                        }
+                    });
+                    document.getElementById('profileFirstName').setAttribute('readonly', 'readonly');
+                    document.getElementById('profileLastName').setAttribute('readonly', 'readonly');
+                    document.getElementById('profileEmail').setAttribute('readonly', 'readonly');
+                    document.getElementById('profilePhone').setAttribute('readonly', 'readonly');
+                    document.getElementById('editProfileButton').style.display = 'inline';
+                    document.getElementById('saveChangesButton').style.display = 'none';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: '¡Hubo un problema!',
+                        text: 'Error al actualizar su información ',
+                        icon: 'error',
+                        toast: true,
+                        position: 'top',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Aceptar',
+                        customClass: {
+                            confirmButton: 'custom-btn',
+                        }
+                    });
+                });
+            });
+            document.getElementById('deleteAccountButton').addEventListener('click', () => {
+                Swal.fire({
+                    title: '¿Estás seguro de que deseas eliminar tu cuenta?',
+                    icon: 'warning',
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Eliminar',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-btn-secondary'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/api/usuarios/${clientId}`, {  // Asegúrate de que la URL sea correcta
+                            method: 'DELETE'
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Error al eliminar la cuenta');
+                            }
+                            Swal.fire({
+                                title: 'Cuenta eliminada',
+                                text: 'Cuenta eliminada con éxito.',
+                                icon: 'success',
+                                toast: true,
+                                position: 'top',
+                                showConfirmButton: true,
+                                confirmButtonText: 'Aceptar',
+                                customClass: {
+                                    confirmButton: 'custom-btn',
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '../index.html'; // Redirigir solo si el usuario hace clic en "Aceptar"
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire({
+                                title: '¡Hubo un problema!',
+                                text: 'Error al eliminar su usuario.',
+                                icon: 'error',
+                                toast: true,
+                                position: 'top',
+                                showConfirmButton: true,
+                                confirmButtonText: 'Aceptar',
+                                customClass: {
+                                    confirmButton: 'custom-btn',
+                                }
+                            });
+                        });
+                    }
+                });
+                                
+            });
+            
+
+            
+                }
+            );
+        
+    </script>
+</body>
+</html>

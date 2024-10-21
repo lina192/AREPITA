@@ -1,0 +1,599 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #ffffff; /*color del fondo*/
+  font-family: "Poppins", sans-serif;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.swiper-button-prev::after{
+    font-size: 25px;
+}
+
+.swiper-button-next::after{
+    font-size: 25px;
+}
+
+.swiper-button-next{
+    color: #edb97f; /*color de las flechas del carrusel*/
+}
+
+.swiper-button-prev{
+    color: #edb97f; /*color de las flechas del carrusel*/
+}
+
+.swiper-pagination-bullet {
+    background-color: #000000;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #edb97f;
+}
+
+
+/*menu*/
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+
+}
+
+.navbar {
+    display: flex;
+}
+
+.menu-1{
+    margin-right: 150px;
+    display: flex;
+    align-items: center;
+}
+/* carrito.css */
+
+/* Estilos para la navegación del menú */
+.menu-1 {
+    display: flex;
+    align-items: center;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+}
+
+.socials span {
+    margin-right: 10px; /* Ajusta el espacio entre el span y el enlace según sea necesario */
+}
+
+.menu-1{
+    margin-right: 240px;
+    display: flex;
+    align-items: center;
+}
+
+
+.menu-1 li {
+    margin-right: 10px; /* Ajusta el espacio entre elementos de la lista si es necesario */
+}
+
+.menu-2{
+    margin-left: 255px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-1 {
+    width: 0;
+}
+
+.logo-2{
+    width: 100px;
+}
+
+
+.socials {
+    display: flex;
+}
+
+.social {
+    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #edb97f; /*color del cuadrado que rodea las redes sociales*/
+    border-radius: 50%;
+}
+
+.social:hover {
+    background-color: #edb97f;
+}
+
+.social img {
+    margin: 8px 0 0 8px;
+    width: 22px; 
+    height: auto;   
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float:right;
+}
+
+.menu .navbar ul li a{
+    font-size: 20px;
+    padding: 12px;
+    color: #000000;
+    display: block;
+}
+
+.menu .navbar ul li a:hover{
+    color: #edb97f;
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+
+/*fin menu*/
+
+/*header*/
+
+.header-content {
+    margin-top: 200px;
+    padding-bottom: 50px;
+}
+
+/*fin header*/
+
+
+/* texto de los iconos */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 170px; /* Ajusta el ancho según tus necesidades */
+    background-color: #edb97f;
+    color: #000000;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px; /* Aumenta el espacio alrededor del texto */
+    position: absolute;
+    z-index: 1;
+    top: 125%; /* Mueve el tooltip abajo del ícono */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el tooltip horizontalmente */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 15px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ESTILOS - PAG AYUDA (BODY) */
+
+body {
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    padding-top: 200px; /* Espacio entre el header y el body */
+   
+}
+
+/* Remover estilos del li con la clase no-style */
+.no-style {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+}
+
+.no-style:hover {
+    background: none;
+}
+
+/* Títulos */
+/* Estilo del título */
+h1 {
+    margin-bottom: 55px; /* Espacio debajo del título */
+    font-size: 25px;
+}
+
+h2 {
+    text-align: center;
+    color: #999797;
+    font-weight: 300;
+    margin-bottom: 30px; /* Espacio debajo de los títulos */
+    text-transform: uppercase; /* Letras mayúsculas para mayor impacto */
+}
+
+h3 {
+    color: #edb97f;
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 20px; /* Espacio debajo de h3 */
+    transition: color 0.3s; /* Suave transición de color */
+}
+
+h3:hover {
+    color: #d8aa75; /* Cambiar color al pasar el cursor */
+}
+
+p {
+    color: #7f8c8d;
+    margin-top: 20px;  /* Espacio encima del párrafo */
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+}
+
+/* Container */
+.container {
+    max-width: 1200px; /* Ampliar el ancho máximo */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section */
+.section {
+    margin-bottom: 40px;
+    background-color: rgb(255, 255, 255);
+    padding: 40px; /* Aumentar el relleno para más espacio interno */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    transition: transform 0.3s, box-shadow 0.3s; /* Mejorar la transición */
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15); /* Sombra más intensa al pasar el cursor */
+}
+
+/* FAQ Items */
+.faq-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item p {
+    margin: 10px 0 0;
+    display: none; /* Ocultar respuestas inicialmente */
+}
+
+/* Formulario */
+form input,
+form textarea,
+form button {
+    width: 100%;
+    max-width: 100%; /* Sin límite en el ancho */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordes ligeramente más redondeados */
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #edb97f; /* Borde al enfocar */
+    box-shadow: #edb97f; /* Sombra al enfocar */
+}
+
+form button {
+    background-color: #edb97f;
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de mano al pasar */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de la fuente */
+    padding: 12px; /* Relleno interno */
+    border-radius: 6px; /* Bordes redondeados */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+form button:hover {
+    background-color: rgb(244, 207, 165); /* Color más oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Efecto de movimiento al pasar el cursor */
+}
+
+/* Listas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #f5d9b8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 6px; /* Bordes más redondeados */
+    transition: background-color 0.3s; /* Suave transición de color */
+}
+
+ul li:hover {
+    background-color: #edb97f; /* Color más oscuro al pasar el cursor */
+}
+
+
+/* Adaptativa Ayuda */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*footer*/
+
+.footer {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px; /* Añade espacio entre el contenedor de tarjetas y el footer */
+}
+
+.links h4 {
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.links p {
+    color: #838181;
+    font-size: 16px;
+    margin-bottom: 1px;
+    display: inline-block;
+}
+
+/*fin footer*/
+
+/*adaptattiva*/
+
+@media(max-width: 991px){
+    .menu{
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    .menu-2 {
+        display: none;
+    }
+    
+    .logo-1 {
+        width: 100px;
+    }
+
+    .logo-2 {
+        width: 0;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fffcfc;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked ~ .navbar {
+        display: initial;
+    }
+
+    .header-content {
+        padding: 30px;
+        margin-top: 100px;
+    }
+
+    .slider{
+        flex-direction: column;
+    }
+
+    .slider-txt {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .slider-txt h1 {
+        font-size: 50px;
+    }
+
+    .slider-txt p {
+        font-size: 16px;
+    }
+    
+    .btn-1 {
+        padding: 10px 25px;
+        font-size: 14px;
+    }  
+
+    .slider-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .slider-img img{
+        margin-right: 0px;
+        width: 300px;
+    } 
+
+    .swiper-horizontal > .swiper-pagination-bullets, 
+    .swiper-pagination-bullets,.swiper-pagination-horizontal, 
+    .swiper-pagination-custom, 
+    .swiper-pagination-fraction {
+        bottom: -7px;
+    }   
+    
+    .tabs {
+        padding: 50px 30px;
+    }
+
+    .tabs label {
+        width: 33%;
+    }
+
+    .info {
+        padding: 30px;
+        flex-direction: column;
+    }
+
+    .info-img {
+        width: 100%;
+        text-align: center;   
+    }
+
+    .info-img img {
+        width: 400px;
+        height: 200px;
+        margin-bottom: 25px;
+    }
+
+    .info-txt {
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-txt h2 {
+        font-size: 50px;
+    }
+
+    .info-txt p {
+        font-size: 16px;
+    }
+
+    .btn-1 {
+        font-size: 16px;
+    }
+
+    .horario {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .horario-info h2 {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    .horario-txt {
+        flex-direction: column;
+    }
+    
+    .socials {
+        justify-content: center;
+    }
+
+    .social img {
+        margin: 8px 0 0 0;
+    }
+
+    .footer {
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .links h4 {
+        margin: 25px 0px 10px 0px;
+    }
+        
+} 

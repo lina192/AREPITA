@@ -1,0 +1,244 @@
+/* Estilos para el modal personalizado */
+.custom-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex; 
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.custom-modal__container {
+    background-color: #fff;
+    padding: 20px 30px; /* Reduce el padding superior para mover el contenido hacia arriba */
+    border-radius: 8px;
+    width: 90%; /* Ancho del modal */
+    max-width: 800px; /* Ancho máximo */
+    max-height: 90%; /* Altura máxima */
+    overflow-y: auto; /* Scroll si es necesario */
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    animation: fadeIn 0.3s; /* Animación al abrir */
+    margin: auto; /* Asegura que el modal esté centrado */
+    margin-top: 40px; 
+}
+
+/* Opciones de personalización en dos columnas */
+.customization-options {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #444;
+    display: grid; /* organizar las opciones */
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 20px; /* Espaciado entre columnas */
+}
+
+/* Ajustes adicionales para inputs u opciones individuales */
+.customization-options label,
+.customization-options input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Para centrar contenido adicional del lado izquierdo (si es necesario) */
+.custom-modal__left {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+/* Estilos generales para las columnas en dispositivos móviles */
+@media (max-width: 768px) {
+    .customization-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Contenido del modal */
+.custom-modal__content {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center; /* Centrar el contenido */
+    align-items: flex-start; /* Alinear los elementos en la parte superior */
+}
+
+/* Estilos de los lados del modal */
+.custom-modal__left {
+    flex: 1; /* Abarcar el lado izquierdo */
+    padding: 20px; 
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 400px; 
+}
+
+.custom-modal__right {
+    flex: 2;
+    padding: 10px; 
+}
+
+/* Estilo para la imagen del producto */
+.modal-product-image {
+    display: block; 
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    width: 80%; 
+    height: auto; /* Mantener proporciones */
+    border-radius: 5px;
+    border: 2px solid #f7d3aaec; 
+    padding: 20px; 
+}
+
+.modal-product-title {
+    color: #333;
+    font-size: 24px;
+    margin: 5px 0px; 
+}
+
+
+.modal-product-description {
+    color: #666;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+
+
+
+/* Contenedor principal para las opciones de personalización */
+.customization {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; /* Espacio uniforme entre las columnas */
+}
+
+/* Contenedor para cada columna */
+.customization-column {
+    flex: 0 0 calc(50% - 20px); 
+    margin-bottom: 20px; /* Margen inferior para separación entre filas */
+}
+
+/* Estilo para cada label */
+.customization label {
+    display: block; 
+    margin-bottom: 10px; /* Espacio entre cada opción */
+}
+
+/* Para pantallas más pequeñas, cambiar a una sola columna */
+@media (max-width: 768px) {
+    .customization-column {
+        flex: 0 0 100%; /* Columna única en pantallas pequeñas */
+    }
+}
+
+
+
+
+/* Estilo para las instrucciones especiales */
+.special-instructions {
+    width: 100%;
+    border: 1px solid #edb97f; 
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    resize: none; 
+    color: #333;
+}
+
+/* Cambiar color del texto al enfocarse */
+.special-instructions:focus {
+    outline: none; 
+    border: 1px solid #edb97f; 
+}
+
+
+/* Footer del Modal */
+.custom-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Controles de cantidad */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 15px; 
+}
+
+/* Botones de cantidad */
+.quantity-btn {
+    background-color: #edb97f; 
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px; 
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #d6a36e;
+}
+
+/* Estilo para el contador */
+.quantity-display {
+    font-size: 18px;
+    padding: 0 10px; /* Espaciado interno entre el texto y los bordes */
+    margin: 0 10px;
+}
+
+/* Estilo del botón de agregar al carrito */
+.btn-2 {
+    background-color: #edb97f; 
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    padding: 10px 20px; 
+    font-size: 14px; 
+    cursor: pointer;
+    display: inline-block; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+/* Cambia el color y añade un efecto al pasar el ratón */
+.btn-2:hover {
+    background-color: #fbd6b1; 
+    transform: translateY(-2px); 
+}
+
+/* Estilo del botón de cerrar */
+.custom-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: #333;
+    font-size: 24px;
+}
+
+.custom-modal__close:hover {
+    color: #edb97f;
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="carrito3.css">
+    <link rel="icon" href="img/icon.ico">
+</head>
+<body>
+    <header>
+        <!-- Menú -->
+        <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li>
+                            <div class="socials">
+                                <span><</span>
+                                <a href="../index.html">Volver</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="">
+                <div class="menu-2">
+                    <div class="socials">
+
+                        <div class="tooltip">
+                            <a href="../index.html">
+                                <div class="social">
+                                    <img src="img/salir.png" alt="Salir">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Salir</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Fin menú -->
+    </header>
+
+    <section>
+        <main>
+            <div class="container">
+                <h1>Tus Productos</h1>
+                <!-- Botón Medio de Envío -->
+                <div class="payment-container">
+                    <button id="open-modal">Dónde quieres tu pedido?</button>
+                </div>
+            
+                
+                <table class="shopping-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Aquí se añadirá el producto seleccionado -->
+                    </tbody>
+                </table>
+
+                <!-- Botón Vaciar Carrito -->
+                <div class="clear-cart-container">
+                    <button id="clear-cart">Vaciar Carrito</button>
+                </div>
+                <div class="total-amount">
+                    <h3>Total General: $<span id="grand-total">0.000</span></h3>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <footer class="footer container">
+        <img class="logo-2" src="img/logo.png" alt="">
+        <div class="links" >
+            <h4>Epa la Arepa</h4>
+            <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados </p>
+        </div>
+
+
+        <div class="links" >
+            <h4>¡Siguenos!</h4>
+            <div class="socials">
+                <a href="https://www.facebook.com/epaarepacolombia/">
+                    <div class="social">
+                        <img src="img/s1.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/epalarepa_/">
+                    <div class="social">
+                        <img src="img/s2.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://x.com/epaLarepa">
+                    <div class="social">
+                        <img src="img/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        // Obtener el año actual
+        var currentYear = new Date().getFullYear();
+        // Colocar el año en el elemento con el id "year"
+        document.getElementById("year").textContent = currentYear;
+    </script>
+
+
+
+
+
+
+
+    <!-- "Inserción" de los productos -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('table-body');
+
+            // Obtener el carrito del localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Definir productos
+            const products = {
+                'hambu': { name: 'Promo del Día', price: 20000, img: 'img/hambu.png' },
+                'salchi': { name: 'Sorpresa Doble', price: 30000, img: 'img/salshi.png' },
+                'plat': { name: 'Plato Especial', price: 12000, img: 'img/plat.png' },
+                
+                // Añadir más productos aquí
+                'h1': { name: 'Hamburgesa De la Casa', price: 24000, img: 'img/h1.png' },
+                'h2': { name: 'Hamburgesa Super', price: 22000, img: 'img/h2.png' },
+                'h3': { name: 'Hamburgesa Especial', price: 20000, img: 'img/h5.png' },
+                'h4': { name: 'Hamburgesa Tradicional', price: 15000, img: 'img/h3.png' },
+                'h5': { name: 'Hamburgesa Hawaiana', price: 18000, img: 'img/h4.png' },
+                'h6': { name: 'Hamburgesa Epa', price: 18000, img: 'img/h6.png' },
+                
+                // Añadir más productos aquí
+                'a7': { name: 'Arepa Especial', price: 18000, img: 'img/a9.png' },
+                'a8': { name: 'Arepa Ranchera', price: 17000, img: 'img/a10.png' },
+                'a9': { name: 'Arepa Mixta', price: 16000, img: 'img/a3.png' },
+                'a10': { name: 'Arepa Con Todo', price: 22000, img: 'img/a4.png' },
+                'a11': { name: 'Arepa Super Especial', price: 20000, img: 'img/a11.png' },
+                'a12': { name: 'Arepa Criolla', price: 17000, img: 'img/a6.png' },
+                'a13': { name: 'Arepa Pollo y champiñon', price: 16000, img: 'img/a7.png' },
+                'a14': { name: 'Arepa Burguer', price: 10000, img: 'img/a8.png' },
+                'a15': { name: 'Arepa Epa', price: 20000, img: 'img/a1.png' },
+                'a16': { name: 'Arepa Callejera', price: 85000, img: 'img/a3.png' },
+                'a17': { name: 'Arepa Del Campo ', price: 17000, img: 'img/a11.png' },
+                'a18': { name: 'Arepa Hawaiana', price: 10000, img: 'img/a12.png' },
+                               
+                // Añadir más productos aquí
+                'sa19': { name: 'Salchipapa Clasica', price: 12000, img: 'img/sa1.png' },
+                'sa20': { name: 'Salchipapa Especial', price: 18000, img: 'img/sa2.png' },
+                'sa21': { name: 'Salchipapa Con Todo', price: 23000, img: 'img/sa3.png' },
+                'sa22': { name: 'Salchipapa Ranchero', price: 25000, img: 'img/sa1.png' },
+                                             
+                // Añadir más productos aquí
+                'p23': { name: 'Pero Caliente Con Todo', price: 20000, img: 'img/p1.png' },
+                'p24': { name: 'Pero Caliente Especial', price: 18500, img: 'img/p3.png' },
+                'p25': { name: 'Pero Caliente Hawaiano', price: 14000, img: 'img/p2.png' },
+                'p26': { name: 'Pero Caliente Clasico', price: 12000, img: 'img/p4.png' },
+                                                             
+                // Añadir más productos aquí
+                'pa27': { name: 'Patacon Burguer', price: 26000, img: 'img/pa1.png' },
+                'pa28': { name: 'Patacon Con Todo', price: 24000, img: 'img/pa2.png' },
+                'pa29': { name: 'Patacon Mixto', price: 22000, img: 'img/p3.png' },
+                'pa30': { name: 'Patacon Ranchero', price: 22000, img: 'img/pa1.png' },
+
+                // Añadir más productos aquí
+                'v31': { name: 'Mazorcada con todo', price: 24000, img: 'img/v1.png' },
+                'v32': { name: 'Mazorcada Sencilla', price: 20000, img: 'img/v2.png' },
+                'v33': { name: 'Chorizo', price: 8500, img: 'img/v3.png' },
+                'v34': { name: 'Chori perro de la casa 1', price: 18500, img: 'img/v5.png' },
+                'v35': { name: 'Chori perro de la casa 2', price: 10000, img: 'img/v4.png' },
+                
+                // Añadir más productos aquí
+                'b36': { name: 'Cocacola', price: 2500, img: 'img/b1.png' },
+                'b37': { name: 'Postobon - Manzana', price: 2000, img: 'img/b2.png' },
+                'b38': { name: 'Postobon - Colombiana', price: 2500, img: 'img/b3.png' },
+                'b39': { name: 'Pepsi', price: 2500, img: 'img/b4.png' },
+                'b40': { name: 'Cuatro', price: 2000, img: 'img/b5.png' },
+            };
+
+
+
+
+
+
+                 // Verificar si el carrito está vacío
+                 function displayCart() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const tableBody = document.getElementById('table-body');
+                    tableBody.innerHTML = ''; // Limpia el contenido previo
+                    let grandTotal = 0; // Variable para acumular el total general
+    
+                    if (cart.length === 0) {
+                        tableBody.innerHTML = '<tr><td colspan="6">No hay productos en el carrito.</td></tr>';
+                        document.getElementById('grand-total').textContent = '0'; // Total cuando el carrito está vacío
+                    } else {
+                        // Mostrar productos en el carrito
+                        cart.forEach(productId => {
+                            const productInfo = products[productId];
+                            if (productInfo) {
+                                const row = document.createElement('tr');
+                                const quantity = 1; // Inicializa la cantidad en 1
+                                const total = productInfo.price; // Total inicial del producto
+    
+                                // Sumar el precio del producto al total general
+                                grandTotal += total;
+    
+                                row.innerHTML = `
+                                    <td><img src="${productInfo.img}" alt="${productInfo.name}" class="product-image"></td>
+                                    <td>${productInfo.name}</td>
+                                    <td class="price">$${productInfo.price.toLocaleString()}</td>
+                                    <td>
+                                        <button class="quantity-btn" onclick="updateQuantity('${productId}', -1)">-</button>
+                                        <span id="quantity-${productId}" class="quantity">${quantity}</span>
+                                        <button class="quantity-btn" onclick="updateQuantity('${productId}', 1)">+</button>
+                                    </td>
+                                    <td class="total">$${total.toLocaleString()}</td>
+                                    <td><button class="delete-btn" onclick="removeFromCart('${productId}')"><img src="img/basura.svg" alt="Eliminar"></button></td>
+                                `;
+                                tableBody.appendChild(row);
+                            }
+                        });
+    
+                        // Actualiza el total general al final de la carga del carrito
+                        document.getElementById('grand-total').textContent = `${grandTotal.toLocaleString()}`; // Muestra el total redondeado con punto de miles
+                    }
+                }
+    
+                // Función para vaciar el carrito
+                document.getElementById('clear-cart').addEventListener('click', () => {
+                    // Vaciar el carrito en el almacenamiento local
+                    localStorage.removeItem('cart');
+    
+                    // Limpiar la tabla
+                    displayCart(); // Llama a la función displayCart para actualizar la vista
+                });
+    
+                // Función para actualizar el total
+                function updateTotal() {
+                    let total = 0;
+                    document.querySelectorAll('.total').forEach(cell => {
+                        total += parseFloat(cell.textContent.replace(/\./g, '').replace('$', ''));
+                    });
+                    document.getElementById('grand-total').textContent = `${Math.round(total).toLocaleString()}`; // Redondea y muestra como número entero
+                }
+    
+
+
+                // Función para eliminar un producto del carrito
+                window.removeFromCart = function(productId) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¿Estás seguro?',
+                        text: '¿Quieres eliminar este producto del carrito?',
+                        toast: true,
+                        position: 'top',
+                        showCancelButton: true,
+                        confirmButtonText: 'Eliminar',
+                        cancelButtonText: 'Cancelar',
+                        customClass: {
+                            confirmButton: 'custom-btn',
+                            cancelButton: 'custom-btn-secondary'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                            cart = cart.filter(id => id !== productId);
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            displayCart(); // Actualiza la vista del carrito
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Producto eliminado!',
+                                text: 'El producto ha sido eliminado del carrito.',
+                                toast: true,
+                                position: 'top',
+                                customClass: {
+                                    confirmButton: 'custom-btn'
+                                },
+                                confirmButtonText: 'Aceptar'
+                            });
+                        }
+                    });
+                }
+
+    
+                // Función para actualizar la cantidad de un producto en el carrito
+                window.updateQuantity = function(productId, change) {
+                    const quantityElement = document.getElementById(`quantity-${productId}`);
+                    let currentQuantity = parseInt(quantityElement.textContent);
+    
+                    // Cambiar la cantidad
+                    const newQuantity = currentQuantity + change;
+    
+                    // Asegurarse de que la cantidad no baje de 1
+                    if (newQuantity < 1) return; // No se permite establecer menos de 1
+    
+                    // Actualizar la cantidad en el elemento
+                    quantityElement.textContent = newQuantity;
+    
+                    const productInfo = products[productId];
+                    const totalElement = quantityElement.closest('tr').querySelector('.total');
+    
+                    // Calcular el nuevo total basado en la cantidad
+                    const newTotal = Math.round(productInfo.price * newQuantity);
+                    totalElement.textContent = `$${newTotal.toLocaleString()}`; // Actualiza el total basado en la nueva cantidad
+    
+                    // Actualizar el carrito en el almacenamiento local
+                    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+                    cart[productId] = newQuantity; // Actualiza o añade la cantidad
+                    localStorage.setItem('cart', JSON.stringify(cart));
+    
+                    // Actualizar el total general
+                    updateTotal();
+                }
+    
+                // Renderizar los productos inicialmente
+                displayCart(); // Mostrar el carrito al cargar la página
+            });
+
+
+        
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function openDeliveryModal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            // Verifica si el carrito está vacío
+            if (cart.length === 0) {
+                // Mostrar alerta de carrito vacío
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Carrito vacío!',
+                    text: 'Añade productos al carrito.',
+                    customClass: {
+                        confirmButton: 'custom-btn'
+                    },
+                    confirmButtonText: 'Añadir'
+                }).then(() => {
+                    // Redirigir a index.html después de que el usuario cierre la alerta
+                    window.location.href = '../index.html';
+                });
+                return; // No abrir el modal si el carrito está vacío
+            } else {
+                // Si el carrito tiene productos, verifica si la URL actual es diferente de 'carrito2.html'
+                if (!window.location.href.includes('carrito2.html')) {
+                    // Muestra la alerta de iniciar sesión
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¡Atención Estimado Cliente!',
+                        text: 'Debes iniciar sesión primero.',
+                        customClass: {
+                            confirmButton: 'custom-btn' // Aplica la clase personalizada
+                        }
+                    }).then(() => {
+                        // Redirige al index después de que el usuario cierre la alerta
+                        window.location.href = '../index.html';
+                    });
+                }
+            }
+        }
+        
+        // Asignar el evento de clic para abrir el modal o mostrar las alertas
+        document.getElementById('open-modal').addEventListener('click', openDeliveryModal);
+        
+    </script>
+    
+   
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</body>
+</html>
+

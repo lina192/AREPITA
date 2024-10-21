@@ -1,0 +1,2833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epa la Arepa</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+     <!-- Enlace a Boxicons -->
+     <link href='https://unpkg.com/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../personalizar.css">
+    <link rel="icon" href="img/icon.ico">
+
+    
+</head>
+
+<body>
+    <header>
+
+        <!-- menu -->
+        <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+
+                    <ul>
+                       
+                        
+                        
+                       
+                        
+                        
+                    </ul>
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="">
+                <div class="menu-2">
+                    <ul>
+                        <!-- Botón del carrito -->
+                        <div class="socials">
+                            <div class="tooltip">
+                            <a href="../vista_cliente/carrito2.html" id="carritoBtn">
+                                <div class="social">
+                                <img src="img/carrito.svg" alt="Carrito">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Carrito de Compras</div>
+                            </div>
+  
+                        
+                            <div class="tooltip">
+                                <a href="../vista_cliente/user.html">
+                                    <div class="social">
+                                        <img src="img/usuario.svg" alt="Usuario">
+                                    </div>
+                                </a>
+                                <div class="tooltiptext">Perfil</div>
+                            </div>
+                    
+    
+                            <div class="tooltip">
+                                <a href="../vista_cliente/favorito.html">
+                                    <div class="social">
+                                        <img src="img/fav.png" alt="Favoritos">
+                                    </div>
+                                </a>
+                                <div class="tooltiptext">Favoritos</div>
+                            </div>
+    
+                            <div class="tooltip">
+                                <a href="../vista_cliente/historial.html">
+                                    <div class="social">
+                                        <img src="img/historial_pedidos.png" alt="Historial de Pedidos">
+                                    </div>
+                                </a>
+                                <div class="tooltiptext">Historial de Pedidos</div>
+                            </div>
+
+                            <div class="tooltip">
+                                <a href="../index.html">
+                                    <div class="social">
+                                        <img src="img/salir.png" alt="Salir">
+                                    </div>
+                                </a>
+                                <div class="tooltiptext">Salir</div>
+                            </div>
+                        </div>
+                    </ul>
+                
+                </div>
+              
+            </nav>
+        </div>
+        <!-- fin menu -->
+
+
+        <!-- carrucel -->
+
+        <div class="header-content container">
+
+            <div class="swiper mySwiper-1">
+                <div class="swiper-wrapper">
+
+                    
+                    <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>¡Promoción <br> del Dia!</h1>
+                                 <p>
+                                    Por tiempo limitado, disfruta de nuestra increíble <br> oferta 2x1 en nuestras hamburguesas especiales. </p>
+                                <div class="botones">
+                                    <!-- "Inserción" de los productos -->
+                                    <a href="#" class="btn-1" onclick="addToCart('hambu')">¡Comprar!</a>
+                                </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="img/buger.png" alt="">
+                            </div>
+                        </div>
+                     </div>
+
+                   
+                     
+                     <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>¡Prueba nuestro Plato Especial!</h1>
+                                 <p>
+                                    Ven y disfruta de una explosión de sabores con esta deliciosa combinación. Perfecto para compartir con amigos.                                </p>
+                                    <div class="botones">
+                                        <!-- "Inserción" de los productos -->
+                                        <a href="#" class="btn-1" onclick="addToCart('plat')">¡Comprar!</a>
+                                    </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="img/plat.png" alt="">
+                            </div>
+                        </div>
+                     </div> 
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+
+        <!-- fin carrucel -->
+
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 1 -->
+
+<section class="custom-modal" id="customizationModal1" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal1">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage1" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName1" class="modal-product-title"></h2>
+                <p id="modalProductDescription1" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+                    
+                        <div class="customization-column">
+                            <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                            <label><input type="checkbox" value="carne"> Carne</label>
+                            <label><input type="checkbox" value="pollo"> Pollo</label>
+                            <label><input type="checkbox" value="bacon"> Tocineta</label>
+                            <label><input type="checkbox" value="champinones"> Champiñones</label>
+                        </div>
+                        <div class="customization-column">
+                            <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                            <label><input type="checkbox" value="tomate"> Tomate</label>
+                            <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                            <label><input type="checkbox" value="huevo"> Huevo frito</label>
+                            <label><input type="checkbox" value="queso"> Queso</label>
+                        </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions1" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity1', -1, 24000)">-</button>
+                <span id="quantity1">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity1', 1, 24000)">+</button>
+            </div>            
+            <span id="totalPrice1">$24,000</span>
+            <button class="btn-2" onclick="addToCart('quantity1', 'totalPrice1')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 2 -->
+
+<section class="custom-modal" id="customizationModal2" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal2">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage2" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName2" class="modal-product-title"></h2>
+                <p id="modalProductDescription2" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="champinones"> Champiñones</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions2" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity2', -1, 22000)">-</button>
+                <span id="quantity2">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity2', 1, 22000)">+</button>
+            </div>
+            
+            <span id="totalPrice2">$22,000</span>
+            <button class="btn-2" onclick="addToCart('quantity2', 'totalPrice2')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 3 -->
+ 
+<section class="custom-modal" id="customizationModal3" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal3">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage3" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName3" class="modal-product-title"></h2>
+                <p id="modalProductDescription3" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="champinones"> Champiñones</label>
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions3" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity3', -1, 20000)">-</button>
+                <span id="quantity3">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity3', 1, 20000)">+</button>
+            </div>
+            
+            <span id="totalPrice3">$20,000</span>
+            <button class="btn-2" onclick="addToCart('quantity3', 'totalPrice3')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 4 -->
+ 
+<section class="custom-modal" id="customizationModal4" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal4">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage4" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName4" class="modal-product-title"></h2>
+                <p id="modalProductDescription4" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions4" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity4', -1, 15000)">-</button>
+                <span id="quantity4">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity4', 1, 15000)">+</button>
+            </div>
+            
+            <span id="totalPrice4">$20,000</span>
+            <button class="btn-2" onclick="addToCart('quantity4', 'totalPrice4')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 5 -->
+ 
+<section class="custom-modal" id="customizationModal5" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal5">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage5" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName5" class="modal-product-title"></h2>
+                <p id="modalProductDescription5" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="piña"> Piña</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="jamon"> Jamón</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions5" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity5', -1, 18000)">-</button>
+                <span id="quantity5">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity5', 1, 18000)">+</button>
+            </div>
+            
+            <span id="totalPrice5">$18,000</span>
+            <button class="btn-2" onclick="addToCart('quantity5', 'totalPrice5')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 6 -->
+ 
+<section class="custom-modal" id="customizationModal6" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal6">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage6" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName6" class="modal-product-title"></h2>
+                <p id="modalProductDescription6" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu hamburguesa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="platano"> Platano maduro</label>
+                        <label><input type="checkbox" value="queso"> Queso campesino</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions6" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity6', -1, 18000)">-</button>
+                <span id="quantity6">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity6', 1, 18000)">+</button>
+            </div>
+            
+            <span id="totalPrice6">$18,000</span>
+            <button class="btn-2" onclick="addToCart('quantity6', 'totalPrice6')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 7 -->
+ 
+<section class="custom-modal" id="customizationModal7" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal7">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage7" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName7" class="modal-product-title"></h2>
+                <p id="modalProductDescription7" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="champinones"> Champiñones</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="jamon"> Jamón</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions7" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity7', -1, 18000)">-</button>
+                <span id="quantity7">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity7', 1, 18000)">+</button>
+            </div>
+            
+            <span id="totalPrice7">$18,000</span>
+            <button class="btn-2" onclick="addToCart('quantity7', 'totalPrice7')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 8 -->
+ 
+<section class="custom-modal" id="customizationModal8" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal8">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage8" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName8" class="modal-product-title"></h2>
+                <p id="modalProductDescription8" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="chorizo"> Chorizo</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions8" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity8', -1, 17000)">-</button>
+                <span id="quantity8">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity8', 1, 17000)">+</button>
+            </div>
+            
+            <span id="totalPrice8">$17,000</span>
+            <button class="btn-2" onclick="addToCart('quantity8', 'totalPrice8')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 9 -->
+ 
+<section class="custom-modal" id="customizationModal9" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal9">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage9" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName9" class="modal-product-title"></h2>
+                <p id="modalProductDescription9" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions9" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity9', -1, 16000)">-</button>
+                <span id="quantity9">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity9', 1, 16000)">+</button>
+            </div>
+            
+            <span id="totalPrice9">$16,000</span>
+            <button class="btn-2" onclick="addToCart('quantity9', 'totalPrice9')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 10 -->
+ 
+<section class="custom-modal" id="customizationModal10" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal10">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage10" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName10" class="modal-product-title"></h2>
+                <p id="modalProductDescription10" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+                        <label><input type="checkbox" value="champinones"> Champiñones</label>
+
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="jamon"> Jamón</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions10" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity10', -1, 22000)">-</button>
+                <span id="quantity10">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity10', 1, 22000)">+</button>
+            </div>
+            
+            <span id="totalPrice10">$22,000</span>
+            <button class="btn-2" onclick="addToCart('quantity10', 'totalPrice10')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 11 -->
+ 
+<section class="custom-modal" id="customizationModal11" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal11">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage11" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName11" class="modal-product-title"></h2>
+                <p id="modalProductDescription11" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions11" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity11', -1, 20000)">-</button>
+                <span id="quantity11">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity11', 1, 20000)">+</button>
+            </div>
+            
+            <span id="totalPrice11">$20,000</span>
+            <button class="btn-2" onclick="addToCart('quantity11', 'totalPrice11')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 12 -->
+ 
+<section class="custom-modal" id="customizationModal12" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal12">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage12" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName12" class="modal-product-title"></h2>
+                <p id="modalProductDescription12" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="huevo"> Huevo frito</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions12" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity12', -1, 17000)">-</button>
+                <span id="quantity12">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity12', 1, 17000)">+</button>
+            </div>
+            
+            <span id="totalPrice12">$17,000</span>
+            <button class="btn-2" onclick="addToCart('quantity12', 'totalPrice12')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 13 -->
+ 
+<section class="custom-modal" id="customizationModal13" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal13">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage13" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName13" class="modal-product-title"></h2>
+                <p id="modalProductDescription13" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="champiñones"> Champiñones</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions13" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity13', -1, 16000)">-</button>
+                <span id="quantity13">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity13', 1, 16000)">+</button>
+            </div>
+            
+            <span id="totalPrice13">$16,000</span>
+            <button class="btn-2" onclick="addToCart('quantity13', 'totalPrice13')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 14 -->
+ 
+<section class="custom-modal" id="customizationModal14" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal14">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage14" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName14" class="modal-product-title"></h2>
+                <p id="modalProductDescription14" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne hamburguesa</label>
+
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions14" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity14', -1, 16000)">-</button>
+                <span id="quantity14">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity14', 1, 16000)">+</button>
+            </div>
+            
+            <span id="totalPrice14">$16,000</span>
+            <button class="btn-2" onclick="addToCart('quantity14', 'totalPrice14')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 15 -->
+ 
+<section class="custom-modal" id="customizationModal15" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal15">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage15" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName15" class="modal-product-title"></h2>
+                <p id="modalProductDescription15" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="platano"> Platano maduro</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="champiñones"> Champiñones</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions15" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity15', -1, 20000)">-</button>
+                <span id="quantity15">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity15', 1, 20000)">+</button>
+            </div>
+            
+            <span id="totalPrice15">$20,000</span>
+            <button class="btn-2" onclick="addToCart('quantity15', 'totalPrice15')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 16 -->
+ 
+<section class="custom-modal" id="customizationModal16" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal16">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage16" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName16" class="modal-product-title"></h2>
+                <p id="modalProductDescription16" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="champiñones"> Champiñones</label>
+                        <label><input type="checkbox" value="chorizo"> Chorizo</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions16" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity16', -1, 18000)">-</button>
+                <span id="quantity16">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity16', 1, 18000)">+</button>
+            </div>
+            
+            <span id="totalPrice16">$18,000</span>
+            <button class="btn-2" onclick="addToCart('quantity16', 'totalPrice16')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 17 -->
+ 
+<section class="custom-modal" id="customizationModal17" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal17">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage17" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName17" class="modal-product-title"></h2>
+                <p id="modalProductDescription17" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="lechuga"> Lechuga</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="tomate"> Tomate</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions17" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity17', -1, 17000)">-</button>
+                <span id="quantity17">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity17', 1, 17000)">+</button>
+            </div>
+            
+            <span id="totalPrice17">$17,000</span>
+            <button class="btn-2" onclick="addToCart('quantity17', 'totalPrice17')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 18 -->
+ 
+<section class="custom-modal" id="customizationModal18" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal18">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage18" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName18" class="modal-product-title"></h2>
+                <p id="modalProductDescription18" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu arepa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="jamon"> Jamón</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="piña"> Piña</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions18" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity18', -1, 10000)">-</button>
+                <span id="quantity18">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity18', 1, 10000)">+</button>
+            </div>
+            
+            <span id="totalPrice18">$10,000</span>
+            <button class="btn-2" onclick="addToCart('quantity18', 'totalPrice18')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 19 -->
+ 
+<section class="custom-modal" id="customizationModal19" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal19">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage19" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName19" class="modal-product-title"></h2>
+                <p id="modalProductDescription19" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu salchipapa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="papas"> Papas a la francesa</label>
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions19" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity19', -1, 12000)">-</button>
+                <span id="quantity19">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity19', 1, 12000)">+</button>
+            </div>
+            
+            <span id="totalPrice19">$12,000</span>
+            <button class="btn-2" onclick="addToCart('quantity19', 'totalPrice19')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 20 -->
+ 
+<section class="custom-modal" id="customizationModal20" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal20">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage20" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName20" class="modal-product-title"></h2>
+                <p id="modalProductDescription20" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu salchipapa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="papas"> Papas a la francesa</label>
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions20" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity20', -1, 18000)">-</button>
+                <span id="quantity20">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity20', 1, 18000)">+</button>
+            </div>
+            
+            <span id="totalPrice20">$18,000</span>
+            <button class="btn-2" onclick="addToCart('quantity20', 'totalPrice20')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 21 -->
+ 
+<section class="custom-modal" id="customizationModal21" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal21">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage21" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName21" class="modal-product-title"></h2>
+                <p id="modalProductDescription21" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu salchipapa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="papas"> Papas a la francesa</label>
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions21" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity21', -1, 23000)">-</button>
+                <span id="quantity21">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity21', 1, 23000)">+</button>
+            </div>
+            
+            <span id="totalPrice21">$23,000</span>
+            <button class="btn-2" onclick="addToCart('quantity21', 'totalPrice21')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 22 -->
+ 
+<section class="custom-modal" id="customizationModal22" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal22">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage22" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName22" class="modal-product-title"></h2>
+                <p id="modalProductDescription22" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu salchipapa</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="papas"> Papas a la francesa</label>
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="carne"> Carne</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="maiz"> Maíz tierno</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions22" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity22', -1, 25000)">-</button>
+                <span id="quantity22">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity22', 1, 25000)">+</button>
+            </div>
+            
+            <span id="totalPrice22">$25,000</span>
+            <button class="btn-2" onclick="addToCart('quantity22', 'totalPrice22')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 23 -->
+ 
+<section class="custom-modal" id="customizationModal23" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal23">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage23" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName23" class="modal-product-title"></h2>
+                <p id="modalProductDescription23" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu perro caliente</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="pollo"> Pollo</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="maiz"> Maíz tierno</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="salsa"> Salsas</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions23" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity23', -1, 20000)">-</button>
+                <span id="quantity23">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity23', 1, 20000)">+</button>
+            </div>
+            
+            <span id="totalPrice23">$20,000</span>
+            <button class="btn-2" onclick="addToCart('quantity23', 'totalPrice23')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 24 -->
+ 
+<section class="custom-modal" id="customizationModal24" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal24">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage24" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName24" class="modal-product-title"></h2>
+                <p id="modalProductDescription24" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu perro caliente</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="champiñones"> Champiñones</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="maiz"> Maíz tierno</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions24" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity24', -1, 18500)">-</button>
+                <span id="quantity24">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity24', 1, 18500)">+</button>
+            </div>
+            
+            <span id="totalPrice24">$18,500</span>
+            <button class="btn-2" onclick="addToCart('quantity24', 'totalPrice24')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 25 -->
+ 
+<section class="custom-modal" id="customizationModal25" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal25">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage25" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName25" class="modal-product-title"></h2>
+                <p id="modalProductDescription25" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu perro caliente</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="bacon"> Tocineta</label>
+                        <label><input type="checkbox" value="piña"> Piña</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salsa"> Salsas</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions25" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity25', -1, 14000)">-</button>
+                <span id="quantity25">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity25', 1, 14000)">+</button>
+            </div>
+            
+            <span id="totalPrice25">$14,000</span>
+            <button class="btn-2" onclick="addToCart('quantity25', 'totalPrice25')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal de Personalización 26 -->
+ 
+<section class="custom-modal" id="customizationModal26" style="display: none;">
+    <div class="custom-modal__container">
+        <div class="custom-modal__close" id="closeCustomModal26">
+            <i class='bx bx-x'></i> <!-- Icono de cerrar -->
+        </div>
+        <div class="custom-modal__content">
+            <div class="custom-modal__left">
+                <img id="modalProductImage26" alt="Producto" class="modal-product-image">
+            </div>
+            <div class="custom-modal__right">
+                <h2 id="modalProductName26" class="modal-product-title"></h2>
+                <p id="modalProductDescription26" class="modal-product-description"></p>
+                <hr>
+                <br>
+                <h3>Personaliza tu perro caliente</h3>
+                <br>
+                <div class="customization">
+
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salchicha"> Salchicha</label>
+                        <label><input type="checkbox" value="cebolla"> Cebolla</label>
+                        <label><input type="checkbox" value="queso"> Queso</label>
+                    </div>
+                    <div class="customization-column">
+                        <label><input type="checkbox" value="salsa"> Salsas</label>
+                        <label><input type="checkbox" value="huevo"> Huevo de codorniz</label>
+                        <label><input type="checkbox" value="papas"> Papas chip</label>
+                    </div>
+                    
+                </div>
+                <h3>Instrucciones Especiales</h3>
+                <textarea id="specialInstructions26" rows="4" placeholder="Escribe tus instrucciones aquí..." class="special-instructions"></textarea>
+            </div>
+        </div>
+        <div class="custom-modal-footer">
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="changeQuantity('quantity26', -1, 12000)">-</button>
+                <span id="quantity26">1</span>
+                <button class="quantity-btn" onclick="changeQuantity('quantity26', 1, 12000)">+</button>
+            </div>
+            
+            <span id="totalPrice26">$12,000</span>
+            <button class="btn-2" onclick="addToCart('quantity26', 'totalPrice26')">Agregar</button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- productos -->
+
+   <main class="products">
+    <div class="tabs container">
+
+
+        <input type="radio" name="tabs" id="tab1" checked="checked" class="tabInput" value="1"> <!-- AQUI-->
+        <label for="tab1"> HAMBURGUESAS </label> <!-- AQUI-->
+        <div class="tab">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h1.png" alt="Hamburguesa De la Casa"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>De la Casa</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, carne, pollo, tocineta, champiñon, cebolla, tomate, lechuga, huevo frito y queso.</p> <!-- AQUI-->
+                        <span class="price">$24.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h1')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+    
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product1')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                    
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal1', 'modalProductImage1', 'modalProductName1', 'modalProductDescription1', 
+                        'img/h1.png', 'De la Casa', 'Carne de hamburguesa, carne, pollo, tocineta, champiñon, cebolla, tomate, lechuga, huevo frito y queso.', 24000)">
+                   
+                       
+                        
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h2.png" alt="Hamburguesa Super"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Super</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, pollo, champiñon, tocineta, cebolla, tomate, lechuga, queso y huevo de codorniz.</p> <!-- AQUI-->
+                        <span class="price">$22.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h2')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product2')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal2', 'modalProductImage2', 'modalProductName2', 'modalProductDescription2', 
+                        'img/h2.png', 'Super', 'Carne de hamburguesa, pollo, champiñon, tocineta, cebolla, tomate, lechuga, queso y huevo de codorniz.', 22000)">
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h5.png" alt="Hamburguesa Especial"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Especial</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, champiñon, cebolla, tomate, lechuga, queso, huevo de codorniz, tocineta y papas chip.</p> <!-- AQUI-->
+                        <span class="price">$20.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h3')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product3')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal3', 
+                        'modalProductImage3', 'modalProductName3', 'modalProductDescription3', 'img/h5.png', 'Especial', 
+                        'Carne de hamburguesa, champiñon, cebolla, tomate, lechuga, queso, huevo de codorniz, tocineta y papas chip.', 20000)">
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h3.png" alt="Hamburguesa Tradicional"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Tradicional</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, cebolla, tomate, lechuga, queso y papas chip.</p> <!-- AQUI-->
+                        <span class="price">$15.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h4')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product4')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal4', 
+                        'modalProductImage4', 'modalProductName4', 'modalProductDescription4', 'img/h3.png', 'Tradicional', 
+                        'Carne de hamburguesa, cebolla, tomate, lechuga, queso y papas chip.', 15000)">
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h4.png" alt="Hamburguesa Hawaiana"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Hawaiana</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, piña, queso, jamón, huevo de codorniz, papas chip, lechuga y tomate.</p> <!-- AQUI-->
+                        <span class="price">$18.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h5')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product5')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+
+                    
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal5', 
+                        'modalProductImage5', 'modalProductName5', 'modalProductDescription5', 'img/h4.png', 'Hawaiana', 
+                        'Carne de hamburguesa, piña, queso, jamón, huevo de codorniz, papas chip, lechuga y tomate.', 18000)">
+
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="img/h6.png" alt="Hamburguesa Epa"> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Epa</h4> <!-- AQUI-->
+                        <p>Carne de hamburguesa, plátano maduro, queso campesino, papas chip, cebolla, tomate y lechuga.</p> <!-- AQUI-->
+                        <span class="price">$18.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('h6')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product6')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal6', 
+                        'modalProductImage6', 'modalProductName6', 'modalProductDescription6', 'img/h6.png', 'Epa', 
+                        'Carne de hamburguesa, plátano maduro, queso campesino, papas chip, cebolla, tomate y lechuga.', 18000)">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <input type="radio" name="tabs" id="tab2" checked="checked" class="tabInput" value="2"> <!-- AQUI-->
+        <label for="tab2"> AREPAS </label> <!-- AQUI-->
+        <div class="tab">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a9.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Especial</h4> <!-- AQUI-->
+                        <p> Carne, pollo, champiñon, jamon, queso, y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$18.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a7')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+    
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product7')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal7', 
+                        'modalProductImage7', 'modalProductName7', 'modalProductDescription7', 'img/a9.png', 'Especial', 
+                        'Carne, pollo, champiñon, jamon, queso, y huevo de cordoniz.', 18000)">
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a10.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Ranchera</h4> <!-- AQUI-->
+                        <p>Carne, pollo, chorizo, queso y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$17.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a8')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product8')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal8', 
+                        'modalProductImage8', 'modalProductName8', 'modalProductDescription8', 'img/a10.png', 'Ranchera', 
+                        'Carne, pollo, chorizo, queso y huevo de cordoniz.', 17000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a3.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Mixta</h4> <!-- AQUI-->
+                        <p>Carne, pollo, queso y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$16.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a9')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product9')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                          
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal9', 
+                        'modalProductImage9', 'modalProductName9', 'modalProductDescription9', 'img/a3.png', 'Mixta', 
+                        'Carne, pollo, queso y huevo de cordoniz.', 16000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a4.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Con Todo</h4> <!-- AQUI-->
+                        <p> Carne, pollo, carne de hamburguesa, champiñon, jamon, queso y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$22.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a10')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product10')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                          
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal10', 
+                        'modalProductImage10', 'modalProductName10', 'modalProductDescription10', 'img/a4.png', 'Con Todo', 
+                        'Carne, pollo, carne de hamburguesa, champiñon, jamon, queso y huevo de cordoniz.', 22000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a11.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Super Especial</h4> <!-- AQUI-->
+                        <p> Carne, pollo, carne de hamburguesa, queso y huevo de cordoniz.</p> <!-- AQUI-->
+                        <span class="price">$20.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a11')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product11')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                          
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal11', 
+                        'modalProductImage11', 'modalProductName11', 'modalProductDescription11', 'img/a11.png', 'Super Especial', 
+                        'Carne, pollo, carne de hamburguesa, queso y huevo de cordoniz.', 20000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a6.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Criolla</h4> <!-- AQUI-->
+                        <p>Carne, Pollo, huevo frito, tocineta y queso.</p> <!-- AQUI-->
+                        <span class="price">$17.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a12')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product12')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                            
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal12', 
+                        'modalProductImage12', 'modalProductName12', 'modalProductDescription12', 'img/a6.png', 'Criolla', 
+                        'Carne, Pollo, huevo frito, tocineta y queso.', 17000)">
+                        
+                        
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a7.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Pollo y Champiñon</h4> <!-- AQUI-->
+                        <p>Pollo, champiñon, queso y huevo de cordoniz.</p> <!-- AQUI-->
+                        <span class="price">$16.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a13')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product13')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                           
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal13', 
+                        'modalProductImage13', 'modalProductName13', 'modalProductDescription13', 'img/a7.png', 'Pollo y Champiñon', 
+                        'Pollo, champiñon, queso y huevo de cordoniz.', 16000)">
+                         
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a8.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Arepa Burguer</h4> <!-- AQUI-->
+                        <p> Carne de hamburguesa y queso.</p> <!-- AQUI-->
+                        <span class="price">$10.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a14')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product14')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                          
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal14', 
+                        'modalProductImage14', 'modalProductName14', 'modalProductDescription14', 'img/a8.png', 'Arepa Burguer', 
+                        'Carne de hamburguesa y queso.', 10000)">
+                        
+                        
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a1.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Epa</h4> <!-- AQUI-->
+                        <p> Platano maduro, queso, champiñon, carne y pollo.</p> <!-- AQUI-->
+                        <span class="price">$20.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a15')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product15')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                           
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal15', 
+                        'modalProductImage15', 'modalProductName15', 'modalProductDescription15', 'img/a1.png', 'Epa', 
+                        'Platano maduro, queso, champiñon, carne y pollo.', 20000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a3.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Callejera</h4> <!-- AQUI-->
+                        <p> Pollo, champiñon, chorizo, cebolla, queso y huevo de cordoniz.</p> <!-- AQUI-->
+                        <span class="price">$18.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a16')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product16')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                           
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal16', 
+                        'modalProductImage16', 'modalProductName16', 'modalProductDescription16', 'img/a3.png', 'Callejera', 
+                        'Pollo, champiñon, chorizo, cebolla, queso y huevo de cordoniz.', 18000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a11.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Del Campo </h4> <!-- AQUI-->
+                        <p>Carne, pollo, cebolla, lechuga, tomate, queso y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$17.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a17')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product17')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                         
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal17', 
+                        'modalProductImage17', 'modalProductName17', 'modalProductDescription17', 'img/a11.png', 'Del Campo', 
+                        'Carne, pollo, cebolla, lechuga, tomate, queso y huevo de cordoniz. ', 17000)">
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/a12.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Hawaiana</h4>
+                        <p>Jamon, queso, piña y huevo de cordoniz.</p>
+                        <span class="price">$10.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('a18')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product18')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal18', 
+                        'modalProductImage18', 'modalProductName18', 'modalProductDescription18', 'img/a12.png', 'Hawaiana', 
+                        'Jamon, queso, piña y huevo de cordoniz.', 10000)">
+                        
+                        
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <input type="radio" name="tabs" id="tab3" checked="checked" class="tabInput" value="3"> <!-- AQUI-->
+        <label for="tab3"> SALCHIPAPA </label> <!-- AQUI-->
+        <div class="tab">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/sa1.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Clasica</h4> <!-- AQUI-->
+                        <p> Papas a la francesa, salchicha y huevo de cordoniz.</p> <!-- AQUI-->
+                        <span class="price">$12.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('sa19')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+    
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product19')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal19', 
+                        'modalProductImage19', 'modalProductName19', 'modalProductDescription19', 'img/sa1.png', 'Clasica', 
+                        'Papas a la francesa, salchicha y huevo de cordoniz.', 12000)">
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/sa2.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Especial</h4> <!-- AQUI-->
+                        <p> Papas a la francesa, salchicha, tocineta, huevo de cordoniz y queso.</p> <!-- AQUI-->
+                        <span class="price">$18.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('sa20')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product20')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal20', 
+                        'modalProductImage20', 'modalProductName20', 'modalProductDescription20', 'img/sa2.png', 'Especial', 
+                        'Papas a la francesa, salchicha, tocineta, huevo de cordoniz y queso.', 18000)">
+                        
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/sa3.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Con Todo</h4> <!-- AQUI-->
+                        <p> Papas a la francesa, salchicha, carne, pollo, tocineta, huevo de cordoniz y queso. </p> <!-- AQUI-->
+                        <span class="price">$23.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('sa21')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product21')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal21', 
+                        'modalProductImage21', 'modalProductName21', 'modalProductDescription21', 'img/sa3.png', 'Con Todo', 
+                        'Papas a la francesa, salchicha, carne, pollo, tocineta, huevo de cordoniz y queso. ', 23000)">
+                        
+                        
+                        
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/sa1.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Ranchero</h4> <!-- AQUI-->
+                        <p> Papas a la francesa, salchicha, carne, pollo, tocineta, huevo de cordoniz, queso y maiz tierno.</p> <!-- AQUI-->
+                        <span class="price">$25.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('sa22')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product22')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                       
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal22', 
+                        'modalProductImage22', 'modalProductName22', 'modalProductDescription22', 'img/sa1.png', 'Ranchero', 
+                        'Papas a la francesa, salchicha, carne, pollo, tocineta, huevo de cordoniz, queso y maiz tierno.', 25000)">
+                        
+                        
+                        
+
+                    </div>
+                </div>
+                 
+
+            </div>
+        </div>
+
+
+        <input type="radio" name="tabs" id="tab4" checked="checked" class="tabInput" value="4"> <!-- AQUI-->
+        <label for="tab4"> PERRO CALIENTE </label> <!-- AQUI-->
+        <div class="tab">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/p1.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Con Todo</h4> <!-- AQUI-->
+                        <p>Salchicha, pollo, tocineta, maiz tierno, cebolla, salsas, queso y huevo de cordoniz.</p> <!-- AQUI-->
+                        <span class="price">$20.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('p23')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+    
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product23')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+        
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal23', 
+                        'modalProductImage23', 'modalProductName23', 'modalProductDescription23', 'img/p1.png', 'Con Todo', 
+                        'Salchicha, pollo, tocineta, maiz tierno, cebolla, salsas, queso y huevo de cordoniz.', 20000)">
+                        
+                        
+                        
+
+                        
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/p3.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Especial</h4> <!-- AQUI-->
+                        <p>Salchicha, champiñon, tocineta, maiz tierno, cebolla, queso y huevo de cordoniz. </p> <!-- AQUI-->
+                        <span class="price">$18.500</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('p24')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product24')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                        
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal24', 
+                        'modalProductImage24', 'modalProductName24', 'modalProductDescription24', 'img/p3.png', 'Especial', 
+                        'Salchicha, champiñon, tocineta, maiz tierno, cebolla, queso y huevo de cordoniz.', 18500)">
+                        
+                        
+                        
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/p2.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Hawaiano</h4> <!-- AQUI-->
+                        <p> Salchicha, tocineta, piña, queso, salsas, huevo de cordoniz, papas chip.  </p> <!-- AQUI-->
+                        <span class="price">$14.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('p25')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product25')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                             
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal25', 
+                        'modalProductImage25', 'modalProductName25', 'modalProductDescription25', 'img/p2.png', 'Hawaiano', 
+                        'Salchicha, tocineta, piña, queso, salsas, huevo de cordoniz, papas chip.', 14000)">
+                        
+                        
+                        
+
+
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img2">
+                        <img src="img/p4.png" alt=""> <!-- AQUI-->
+                    </div>
+                    <div class="product-txt">
+                        <h4>Clasico</h4> <!-- AQUI-->
+                        <p>Salchicha, cebolla, queso, salsas, huevo de cordoniz, papas chip. </p> <!-- AQUI-->
+                        <span class="price">$12.000</span> <!-- AQUI-->
+                    </div>
+                    <a href="#" class="buy-btn" onclick="addToCart('p26')">Comprar</a> <!-- AQUI-->
+                    <div class="icon-container">
+                        <a href="#" class="favorite-icon" onclick="addToFavorites('product26')"> <!-- AQUI-->
+                            <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                        </a>
+                              
+                        
+                        
+
+                        <img src="img/mas.ico" alt="" class="btn-more" 
+                        onclick="openModal('customizationModal26', 
+                        'modalProductImage26', 'modalProductName26', 'modalProductDescription26', 'img/p4.png', 'Clasico', 
+                        'Salchicha, cebolla, queso, salsas, huevo de cordoniz, papas chip.', 12000)">
+                        
+                        
+                        
+
+
+                    </div>
+                </div>
+                 
+
+            </div>
+        </div>
+
+
+        <input type="radio" name="tabs" id="tab5" checked="checked" class="tabInput" value="5"> <!-- AQUI-->
+            <label for="tab5"> VARIEDADES </label> <!-- AQUI-->
+            <div class="tab">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/pa1.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Patacon Burguer</h4> <!-- AQUI-->
+                            <p>Platano, carne, pollo, champiñon, maiz tierno, cebolla, huevo de cordoniz, papas chip y queso.  </p> <!-- AQUI-->
+                            <span class="price">$26.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('pa27')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+        
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product27')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+            
+                            <img src="img/mas.ico" alt="">
+                            
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/pa2.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Con Todo</h4> <!-- AQUI-->
+                            <p> Platano, carne, pollo, champiñon, maiz tierno, cebolla, huevo de cordoniz y queso. </p> <!-- AQUI-->
+                            <span class="price">$24.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('pa28')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product28')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/pa3.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Mixto</h4> <!-- AQUI-->
+                            <p> Platano, carne, pollo, champiñon y queso. </p>  <!-- AQUI-->
+                            <span class="price">$22.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('pa29')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product29')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/pa1.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Ranchero</h4> <!-- AQUI-->
+                            <p>Platano, carne, champiñon, huevo frito y queso.</p> <!-- AQUI-->
+                            <span class="price">$22.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('pa30')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product30')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/v1.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Mazorcada con todo</h4> <!-- AQUI-->
+                            <p>Carne, pollo, tocineta, champiñon, maiz tierno, huevo de cordoniz, papas chip y queso.</p> <!-- AQUI-->
+                            <span class="price">$24.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('v31')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+        
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product31')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+            
+                            <img src="img/mas.ico" alt="">
+                            
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/v2.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Mazorcada Sencilla</h4> <!-- AQUI-->
+                            <p>Pollo, tocineta, maiz tierno, huevo de cordoniz, papas chip y queso.  </p> <!-- AQUI-->
+                            <span class="price">$20.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('v32')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product32')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/v3.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Chorizo</h4> <!-- AQUI-->
+                            <p>Chorizo con arepa y queso</p>  <!-- AQUI-->
+                            <span class="price">$8.500</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('v33')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product33')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/v5.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Chori perro de la casa</h4> <!-- AQUI-->
+                            <p>Pollo, tocineta, maiz tierno, cebolla, queso y huevo de cordoniz.</p> <!-- AQUI-->
+                            <span class="price">$18.500</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('v34')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product34')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/v4.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Chori perro de la casa</h4> <!-- AQUI-->
+                            <p>champiñon, tocineta, Maiz tierno, cebolla y queso.</p> <!-- AQUI-->
+                            <span class="price">$10.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('v35')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product35')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+
+
+            <input type="radio" name="tabs" id="tab6" checked="checked" class="tabInput" value="6"> <!-- AQUI-->
+            <label for="tab6"> BEBIDAS </label> <!-- AQUI-->
+            <div class="tab">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/b1.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Cocacola</h4> <!-- AQUI-->
+                            <span class="price">$2.500</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('b36')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+        
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product36')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+            
+                            <img src="img/mas.ico" alt="">
+                            
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/b2.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Postobon - Manzana</h4> <!-- AQUI-->
+                            <span class="price">$2.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('b37')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product37')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/b3.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Postobon - Colombiana </h4> <!-- AQUI-->
+                            <span class="price">$2.500</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('b38')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product38')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/b4.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Pepsi</h4> <!-- AQUI-->
+                            <span class="price">$2.500</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('b39')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product39')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img2">
+                            <img src="img/b5.png" alt=""> <!-- AQUI-->
+                        </div>
+                        <div class="product-txt">
+                            <h4>Cuatro</h4> <!-- AQUI-->
+                            <span class="price">$2.000</span> <!-- AQUI-->
+                        </div>
+                        <a href="#" class="buy-btn" onclick="addToCart('b40')">Comprar</a> <!-- AQUI-->
+                        <div class="icon-container">
+
+                            <a href="#" class="favorite-icon" onclick="addToFavorites('product40')"> <!-- AQUI-->
+                                <img src="img/corazon.ico" alt="Añadir a Favoritos">
+                            </a>
+                            <img src="img/mas.ico" alt="">
+
+                        </div>
+                    </div>
+                     
+    
+                </div>
+            </div>
+
+    </div>
+</main>
+
+
+<!--fin productos -->
+
+
+
+
+    <footer class="footer container">
+        <img class="logo-3" src="img/logo.png" alt="">
+        <div class="links" >
+            <h4>Epa la Arepa</h4>
+            <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados </p><br>
+            <p><a href="nosotros.html">¿Quieres saber un poco mas de Nosotros?</a></p> <br>
+            <p><a href="sedes.html">Nuestras Sedes</a></p>
+        </div>
+
+
+        <div class="links" >
+            <h4>¡Siguenos!</h4>
+            <div class="socials">
+                <a href="https://www.facebook.com/epaarepacolombia/">
+                    <div class="social">
+                        <img src="img/s1.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/epalarepa_/">
+                    <div class="social">
+                        <img src="img/s2.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://x.com/epaLarepa">
+                    <div class="social">
+                        <img src="img/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        // Obtener el año actual
+        var currentYear = new Date().getFullYear();
+        // Colocar el año en el elemento con el id "year"
+        document.getElementById("year").textContent = currentYear;
+    </script>
+
+
+    <script>
+        var swiper1 = new Swiper(".mySwiper-1", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+        var swiper2 = new Swiper(".mySwiper-2", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="../vista_cliente/script1.js"></script>
+    <script src="../personalizar.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetAlert.js"></script>
+</body>
+
+</html>

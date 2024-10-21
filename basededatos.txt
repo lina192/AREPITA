@@ -1,0 +1,165 @@
+Create database EpaArepaRellena;
+Use EpaArepaRellena;
+
+
+
+-- Tabla CLIENTE
+CREATE TABLE Cliente (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    telefono_cli VARCHAR(20),
+    correo_cli VARCHAR(50),
+    apellido_cli VARCHAR(50),
+    nombre_cli VARCHAR(50),
+    contraseña_cli VARCHAR(255) -- Aquí se almacena la contraseña en forma de hash
+);
+
+-- Tabla PRODUCTO
+CREATE TABLE Producto (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    precio DECIMAL(10, 2),
+    descripcion TEXT,
+    tipo VARCHAR(20),
+    nombre_producto VARCHAR(50)
+);
+
+-- Tabla MESERO
+CREATE TABLE Mesero (
+    id_mesero INT PRIMARY KEY AUTO_INCREMENT,
+    correo_msr VARCHAR(50),
+    nombre_msr VARCHAR(50),
+    apellido_msr VARCHAR(50),
+    telefono_msr VARCHAR(20),
+    contraseña_msr VARCHAR(255) -- Aquí se almacena la contraseña en forma de hash
+);
+
+-- Tabla DOMICILIARIO
+CREATE TABLE Domiciliario (
+    id_domiciliario INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_domi VARCHAR(50),
+    apellido_domi VARCHAR(50),
+    telefono_domi VARCHAR(20),
+    correo_domi VARCHAR(50),
+    contraseña_domi VARCHAR(255) -- Aquí se almacena la contraseña en forma de hash
+);
+
+-- Tabla ADMINISTRADOR
+CREATE TABLE Administrador (
+    id_admin INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_admin VARCHAR(50),
+    apellido_admin VARCHAR(50),
+    telefono_admin VARCHAR(20),
+    contraseña_admin VARCHAR(255), -- Aquí se almacena la contraseña en forma de hash
+	 correo_admin VARCHAR(50)
+);
+
+-- Tabla VENTA
+CREATE TABLE Venta (
+    id_venta INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    id_producto INT,
+    id_mesero INT,
+    id_domiciliario INT,
+    id_admin INT,
+    fecha_compra DATE,
+    metodo_pago VARCHAR(20),
+    abono_pago DECIMAL(10, 2),
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
+    FOREIGN KEY (id_producto) REFERENCES Producto(id_producto),
+    FOREIGN KEY (id_mesero) REFERENCES Mesero(id_mesero),
+    FOREIGN KEY (id_domiciliario) REFERENCES Domiciliario(id_domiciliario),
+    FOREIGN KEY (id_admin) REFERENCES Administrador(id_admin)
+);
+
+-- Tabla USUARIO
+CREATE TABLE Usuario (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    telefono VARCHAR(20),
+    correo VARCHAR(50),
+    contraseña VARCHAR(255), -- Aquí se almacena la contraseña en forma de hash
+    rol ENUM('cliente', 'mesero', 'domiciliario', 'administrador') NOT NULL
+);
+
+
+select*from Administrador;
+select*from domiciliario;
+select*from Cliente;
+
+INSERT INTO Administrador (nombre_admin, apellido_admin, telefono_admin, contraseña_admin, correo_admin) 
+VALUES 
+('NombreAdmin', 'ApellidoAdmin', '12351515151', '123', 'admin@hotmail.com');
+
+
+drop database epaareparellena;
+
+
+
+SELECT id_cliente AS id_usuario, nombre_cli AS nombre, apellido_cli AS apellido, telefono_cli AS telefono, correo_cli AS correo, 'cliente' AS rol
+FROM Cliente
+UNION
+SELECT id_mesero AS id_usuario, nombre_msr AS nombre, apellido_msr AS apellido, telefono_msr AS telefono, correo_msr AS correo, 'mesero' AS rol
+FROM Mesero
+UNION
+SELECT id_domiciliario AS id_usuario, nombre_domi AS nombre, apellido_domi AS apellido, telefono_domi AS telefono, correo_domi AS correo, 'domiciliario' AS rol
+FROM Domiciliario
+UNION
+SELECT id_admin AS id_usuario, nombre_admin AS nombre, apellido_admin AS apellido, telefono_admin AS telefono, correo_admin AS correo, 'administrador' AS rol
+FROM Administrador;
+
+
+
+
+INSERT INTO Producto (precio, descripcion, tipo, nombre_producto) VALUES 
+(15000, 'Hamburguesa con ingredientes premium', 'Hamburguesa', 'Hamburguesa Super'),
+(13000, 'Hamburguesa con receta especial de la casa', 'Hamburguesa', 'Hamburguesa de la Casa'),
+(12000, 'Hamburguesa clásica con ingredientes básicos', 'Hamburguesa', 'Hamburguesa Tradicional'),
+(14000, 'Hamburguesa con piña y salsa hawaiana', 'Hamburguesa', 'Hamburguesa Hawaiana'),
+(16000, 'Hamburguesa especial con ingredientes sorpresa', 'Hamburguesa', 'Hamburguesa Epa'),
+(10000, 'Arepa con carne, queso, y más ingredientes', 'Arepa', 'Arepa Especial'),
+(11000, 'Arepa con combinación mixta de sabores', 'Arepa', 'Arepa Mixta'),
+(12000, 'Arepa con ingredientes rancheros', 'Arepa', 'Arepa Ranchera'),
+(13000, 'Arepa con todos los ingredientes disponibles', 'Arepa', 'Arepa con Todo'),
+(14000, 'Arepa especial con más relleno', 'Arepa', 'Arepa Super Especial'),
+(9000, 'Arepa clásica con ingredientes criollos', 'Arepa', 'Arepa Criolla'),
+(8500, 'Arepa estilo callejero', 'Arepa', 'Arepa Callejera'),
+(9500, 'Arepa con ingredientes del campo', 'Arepa', 'Arepa del Campo'),
+(10000, 'Arepa con piña y salsa hawaiana', 'Arepa', 'Arepa Hawaiana'),
+(8000, 'Salchipapa con papas y salchichas clásicas', 'Salchipapa', 'Salchipapa Clásica'),
+(9000, 'Salchipapa especial con ingredientes extra', 'Salchipapa', 'Salchipapa Especial'),
+(9500, 'Salchipapa con todos los ingredientes disponibles', 'Salchipapa', 'Salchipapa con Todo'),
+(9500, 'Salchipapa con ingredientes rancheros', 'Salchipapa', 'Salchipapa Ranchera'),
+(7000, 'Perro caliente con todos los ingredientes', 'Perro', 'Perro con Todo'),
+(7500, 'Perro caliente con piña y salsa hawaiana', 'Perro', 'Perro Hawaiano'),
+(6500, 'Perro caliente clásico', 'Perro', 'Perro Clásico'),
+(8000, 'Perro caliente especial con ingredientes extra', 'Perro', 'Perro Especial'),
+(2500, 'Bebida gaseosa Coca-Cola', 'Bebida', 'Coca-Cola'),
+(2500, 'Bebida gaseosa Postobon de Manzana', 'Bebida', 'Postobon de Manzana'),
+(2500, 'Bebida gaseosa Colombiana', 'Bebida', 'Colombiana'),
+(2500, 'Bebida Cuatro', 'Bebida', 'Cuatro');
+
+INSERT INTO Domiciliario (nombre_domi, apellido_domi, telefono_domi, correo_domi, contraseña_domi) VALUES
+('Pedro', 'Alvarez', '3112345678', 'domiciliario1@example.com', 'Y1z2A3b4C5'),
+('Luis', 'Ramírez', '3123456789', 'domiciliario2@example.com', 'D6e7F8g9H0'),
+('Carlos', 'Pérez', '3134567890', 'domiciliario3@example.com', 'I1j2K3l4M5'),
+('Jorge', 'Santos', '3145678901', 'domiciliario4@example.com', 'N6o7P8q9R0'),
+('Andrés', 'Morales', '3156789012', 'domiciliario5@example.com', 'T1u2V3w4X5'),
+('Fernando', 'García', '3167890123', 'domiciliario6@example.com', 'Y6z7A8b9C0'),
+('Diego', 'Hernández', '3178901234', 'domiciliario7@example.com', 'E1f2G3h4I5'),
+('Gabriel', 'Vásquez', '3189012345', 'domiciliario8@example.com', 'J6k7L8m9N0'),
+('David', 'Cruz', '3190123456', 'domiciliario9@example.com', 'O1p2Q3r4S5'),
+('Santiago', 'Salazar', '3201234567', 'domiciliario10@example.com', 'T6u7V8w9X0');
+
+USE EpaArepaRellena;
+
+INSERT INTO Cliente (telefono_cli, correo_cli, apellido_cli, nombre_cli, contraseña_cli) VALUES
+('3012345678', 'cliente1@example.com', 'Pérez', 'Juan', 'A1b2C3d4E5'),
+('3023456789', 'cliente2@example.com', 'Gómez', 'María', 'F6g7H8i9J0'),
+('3034567890', 'cliente3@example.com', 'Martínez', 'Luis', 'K1l2M3n4O5'),
+('3045678901', 'cliente4@example.com', 'López', 'Ana', 'P6q7R8s9T0'),
+('3056789012', 'cliente5@example.com', 'Hernández', 'Carlos', 'U1v2W3x4Y5'),
+('3067890123', 'cliente6@example.com', 'Ramírez', 'Patricia', 'Z6a7B8c9D0'),
+('3078901234', 'cliente7@example.com', 'Díaz', 'Jorge', 'E1f2G3h4I5'),
+('3089012345', 'cliente8@example.com', 'Torres', 'Sofía', 'J6k7L8m9N0'),
+('3090123456', 'cliente9@example.com', 'Flores', 'Andrés', 'O1p2Q3r4S5'),
+('3101234567', 'cliente10@example.com', 'González', 'Lucía', 'T6u7V8w9X0');

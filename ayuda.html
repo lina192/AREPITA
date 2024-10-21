@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Ayuda</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="ayuda.css">
+    <link rel="icon" href="img/icon.ico">
+</head>
+<body>
+    <header>
+         <!-- menu -->
+         <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="Logo">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="Menu">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li class="no-style">
+                            <div class="socials">
+                                <span><</span>
+                                <a href="../Vista_Cliente/user.html" class="no-border">Volver</a>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="Logo">
+                <div class="menu-2">
+                    <div class="socials">
+
+                        <div class="tooltip">
+                            <a href="../index.html">
+                                <div class="social">
+                                    <img src="img/salir.png" alt="Salir">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Salir</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- fin menu -->
+    </header>
+
+    
+    <body>
+        
+    
+    
+
+
+
+        <div class="container">
+            <h1>Centro de Ayudas</h1>
+        
+            <!-- Preguntas Frecuentes (FAQ) -->
+            <div class="section" id="faq">
+                <h2>Preguntas Frecuentes (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>¿Cómo hacer un pedido?</h3>
+                    <p>Puedes hacer un pedido a través de nuestra página seleccionando los productos que deseas, eligiendo tu dirección de entrega y confirmando el método de pago.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Cómo verificar el estado de mi pedido?</h3>
+                    <p>Después de hacer un pedido, puedes rastrear su estado en tiempo real desde la sección "Historial".</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Cómo puedo cancelar mi pedido?</h3>
+                    <p>Para cancelar un pedido, visita la sección "Carrito" y selecciona la opción correspondiente antes de que tu pedido sea procesado.</p>
+                </div>
+            </div>
+        
+            <!-- Centro de Ayuda (Base de Conocimiento) -->
+            <div class="section" id="help-center">
+                <h2>Centro de Ayuda</h2>
+                <div class="faq-item">
+                    <h3>Cómo crear una cuenta</h3>
+                    <p>Para crear una cuenta, ve a la página de registro, introduce tus datos y sigue las instrucciones para confirmar tu correo electrónico.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Cómo seleccionar productos y agregarlos al carrito</h3>
+                    <p>Selecciona los productos que te interesan, ajusta la cantidad y agrégalos al carrito haciendo clic en el botón correspondiente.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Cómo proceder con el pago</h3>
+                    <p>Una vez tengas tus productos en el carrito, sigue los pasos para elegir tu dirección de entrega y selecciona un método de pago.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Cómo hacer seguimiento en tiempo real de tu pedido</h3>
+                    <p>Entra en la sección "Historial" para ver el estado de tu pedido en tiempo real, incluyendo la etapa de procesamiento y la entrega.</p>
+                </div>
+            </div>
+        
+            <!-- Soporte Técnico -->
+            <div class="section" id="technical-support">
+                <h2>Soporte Técnico</h2>
+                <div class="faq-item">
+                    <h3>Verifica tu conexión a internet</h3>
+                    <p>Asegúrate de estar conectado a una red de internet estable antes de realizar cualquier acción en la página web.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Uso de navegador compatible</h3>
+                    <p>Te recomendamos utilizar navegadores como Chrome o Microsoft Edge para asegurar el correcto funcionamiento del sitio.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Formulario de contacto para problemas técnicos</h3>
+                    <p>Si después de verificar los pasos anteriores, el problema persiste, ponte en contacto con nuestro equipo de soporte a través del formulario de contacto.</p>
+                </div>
+            </div>
+        
+            <!-- Formulario de Contacto -->
+            <div class="section" id="contact-form">
+                <h2>Formulario de Contacto</h2>
+                <form id="contactForm">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                    <textarea name="mensaje" rows="5" placeholder="Describe tu consulta o problema" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+                <div id="message" style="display:none;"></div> <!-- Mensaje de respuesta -->
+            </div>
+    
+        </div>
+        
+
+
+
+
+
+        <footer class="footer container">
+            <img class="logo-2" src="img/logo.png" alt="">
+            <div class="links">
+                <h4>Epa la Arepa</h4>
+                <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados</p>
+            </div>
+    
+            <div class="links">
+                <h4>¡Siguenos!</h4>
+                <div class="socials">
+                    <a href="https://www.facebook.com/epaarepacolombia/">
+                        <div class="social">
+                            <img src="img/s1.svg" alt="">
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/epalarepa_/">
+                        <div class="social">
+                            <img src="img/s2.svg" alt="">
+                        </div>
+                    </a>
+                    <a href="https://x.com/epaLarepa">
+                        <div class="social">
+                            <img src="img/s3.svg" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    
+        <script>
+            // Obtener el año actual
+            var currentYear = new Date().getFullYear();
+            // Colocar el año en el elemento con el id "year"
+            document.getElementById("year").textContent = currentYear;
+
+        </script>
+
+        <script src="ayuda.js"></script>
+</body>
+</html>
+

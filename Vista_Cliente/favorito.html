@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="fav.css">
+    <link rel="icon" href="img/icon.ico">
+</head>
+<body>
+    <header>
+         <!-- menu -->
+         <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="Logo">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="Menu">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li>
+                            <div class="socials">
+                                <span><</span>
+                                <a href="index.html">Volver</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="Logo">
+                <div class="menu-2">
+                    <div class="socials">
+                        <div class="tooltip">
+                            <a href="../vista_cliente/carrito2.html">
+                                <div class="social">
+                                    <img src="img/carrito.svg" alt="Carrito">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Carrito de Compras</div>
+                        </div>
+
+                        <div class="tooltip">
+                            <a href="../vista_cliente/user.html">
+                                <div class="social">
+                                    <img src="img/usuario.svg" alt="Usuario">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Perfil</div>
+                        </div>
+
+                        <div class="tooltip">
+                            <a href="../index.html">
+                                <div class="social">
+                                    <img src="img/salir.png" alt="Salir">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Salir</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- fin menu -->
+    </header>
+
+    
+    <body>
+        <section>
+            <main class="favorites-container" id="favorites-container">
+                <!-- Las tarjetas de productos se insertarán aquí dinámicamente -->
+            </main>
+            <div id="no-favorites" style="display: none;">
+                <img src="img/fav-img.png" alt="Empty Plate">
+                <p>Deja que la comida hable por ti</p>
+                <p>Tus elecciones favoritas aparecerán aquí, listas para que las disfrutes una y otra vez.</p>
+            </div>
+            
+            
+        </section>
+    
+        <script src="fav.js"></script> <!-- Archivo JavaScript para manejar los favoritos -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Incluye SweetAlert -->
+
+        <footer class="footer container">
+            <img class="logo-2" src="img/logo.png" alt="">
+            <div class="links">
+                <h4>Epa la Arepa</h4>
+                <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados</p>
+            </div>
+    
+            <div class="links">
+                <h4>¡Siguenos!</h4>
+                <div class="socials">
+                    <a href="https://www.facebook.com/epaarepacolombia/">
+                        <div class="social">
+                            <img src="img/s1.svg" alt="">
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/epalarepa_/">
+                        <div class="social">
+                            <img src="img/s2.svg" alt="">
+                        </div>
+                    </a>
+                    <a href="https://x.com/epaLarepa">
+                        <div class="social">
+                            <img src="img/s3.svg" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>
+

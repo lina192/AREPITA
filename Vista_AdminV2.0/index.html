@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Administrador Panel</title>
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>¡Bienvenido Administrador!</h1>
+        </div>
+        <div class="menu-links">
+            <a href="/Vista_AdminV2.0/agregarUsua.html" class="menu-item">Agregar Usuarios</a>
+            <a href="/Vista_AdminV2.0/actualizarUsua.html" class="menu-item">Ver Usuarios</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="toggle-menu">
+                    <button id="menu-toggle" class="btn">☰ Menú</button>
+                </div>
+                <img src="img/logo.png" alt="Logo">
+                <div class="user">
+                    <a href="index.html" class="btn">Pedidos</a>
+                    <a href="menu.html" class="btn">Menú</a>
+                    <a href="Agregarmenu.html" class="btn">Agregar Menú</a>
+                    <a href="/index.html" class="btn">Salir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-2">
+            <div class="orders-box">
+                <h3>Lista de Usuarios</h3>
+                <div class="entries-controls">
+                    <label for="entries">Mostrar</label>
+                    <select id="entries">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                    </select>
+                    <span>entradas por página</span>
+                </div>
+                <input type="text" id="search" placeholder="Buscar...">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Los datos de los usuarios se cargarán aquí -->
+                    </tbody>
+                </table>
+                <div class="pagination-info">
+                    <p id="pagination-text">Mostrando 1 a 5 de 5 entradas</p>
+                    <div class="pagination-controls">
+                        <a href="#" id="first">Primero</a>
+                        <a href="#" id="previous">Anterior</a>
+                        <span id="page-number">1</span>
+                        <a href="#" id="next">Siguiente</a>
+                        <a href="#" id="last">Último</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let currentPage = 1;
+            let rowsPerPage = 5; // Valor predeterminado
+            const tableBody = document.getElementById('table-body');
+            let usuarios = []; // Almacena los usuarios obtenidos
+
+            // Función para cargar los usuarios desde la API
+            function cargarUsuarios() {
+                fetch('/api/usuarios')  // Cambia esta URL según tu API
+                    .then(response => response.json())
+                    .then(data => {
+                        usuarios = data; // Guarda la lista de usuarios
+                        displayRows(); // Muestra las filas después de cargar los datos
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener usuarios:', error);
+                    });
+            }
+
+            // Función para mostrar filas según la página actual y entradas por página
+            function displayRows() {
+                // Limpia el cuerpo de la tabla antes de mostrar los nuevos datos
+                tableBody.innerHTML = '';
+
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+
+                // Muestra solo los usuarios de la página actual
+                for (let i = start; i < end && i < usuarios.length; i++) {
+                    const usuario = usuarios[i];
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${usuario.id_usuario}</td>
+                        <td>${usuario.nombre}</td>
+                        <td>${usuario.telefono}</td>
+                        <td>${usuario.correo}</td>
+                        <td>${usuario.rol}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                }
+
+                // Actualiza el texto de la paginación
+                const totalRows = usuarios.length;
+                document.getElementById('pagination-text').innerText = `Mostrando ${start + 1} a ${Math.min(end, totalRows)} de ${totalRows} entradas`;
+                document.getElementById('page-number').innerText = currentPage;
+            }
+
+            // Función para actualizar el número de filas por página
+            document.getElementById('entries').addEventListener('change', function() {
+                rowsPerPage = parseInt(this.value);
+                currentPage = 1; // Reinicia a la primera página
+                displayRows();
+            });
+
+            // Función de búsqueda
+            document.getElementById('search').addEventListener('keyup', function() {
+                const searchText = this.value.toLowerCase();
+                // Filtra usuarios según el texto de búsqueda
+                usuarios.forEach((usuario, index) => {
+                    const row = tableBody.rows[index];
+                    const rowText = `${usuario.nombre} ${usuario.apellido} ${usuario.telefono} ${usuario.correo} ${usuario.rol}`.toLowerCase();
+                    row.style.display = rowText.includes(searchText) ? '' : 'none';
+                });
+
+                // Actualiza el texto de la paginación
+                const visibleRows = Array.from(tableBody.rows).filter(row => row.style.display !== 'none').length;
+                document.getElementById('pagination-text').innerText = `Mostrando 1 a ${visibleRows} de ${visibleRows} entradas (filtradas)`;
+            });
+
+            // Controles de paginación
+            document.getElementById('first').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentPage = 1;
+                displayRows();
+            });
+
+            document.getElementById('previous').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayRows();
+                }
+            });
+
+            document.getElementById('next').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage * rowsPerPage < usuarios.length) {
+                    currentPage++;
+                    displayRows();
+                }
+            });
+
+            document.getElementById('last').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentPage = Math.ceil(usuarios.length / rowsPerPage);
+                displayRows();
+            });
+
+            // Cargar los usuarios al inicio
+            cargarUsuarios();
+        </script>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="menu.js"></script>
+</body>
+
+</html>

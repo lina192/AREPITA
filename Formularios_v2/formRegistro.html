@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styleregistro.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>Registro</title>
+</head>
+<body>
+    <section class="form-register">
+        <img src="img/logo.png" class="logo" width="105" height="105" alt="logo">
+        <h1>¡Regístrate Aquí!</h1>
+        <form id="miFormulario">
+            <label for="nombres">Nombres:</label>
+            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese sus nombres" required maxlength="50" pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios">
+
+            <label for="apellidos">Apellidos:</label>
+            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos" required maxlength="50" pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios">
+
+            <label for="telefono">Teléfono:</label>
+            <input class="controls" type="text" name="telefono" id="telefono" placeholder="Ingrese su número de contacto" required maxlength="10">
+
+            <label for="correo">Correo:</label>
+            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo" required maxlength="100">
+
+            <label for="contraseña">Contraseña:</label>
+            <div class="password-wrapper">
+                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese una contraseña" required maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}" title="La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula, un número y un carácter especial">
+                <button type="button" id="togglePassword" class="toggle-password">Mostrar</button>
+            </div>
+
+            <div class="terms-wrapper">
+                <input type="checkbox" id="aceptarTerminos" required>
+                <label for="aceptarTerminos"><a href="https://policies.google.com/terms?hl=es">Acepto los términos y condiciones</a></label>
+            </div>
+            
+            <input class="botons" type="submit" value="Registrar">
+
+            <p><a href="../index.html">¿Ya tengo cuenta?</a></p>
+            <div id="mensaje" class="mensaje"></div>
+        </form> 
+    </section>
+
+    <script src="scriptfunc.js"></script>
+</body>
+</html>

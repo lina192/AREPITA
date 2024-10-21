@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Pedidos</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="historial.css">
+    <link rel="icon" href="img/icon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+        <!-- menu -->
+        <div class="menu container">
+            <img class="logo-1" src="img/log.png" alt="Logo">
+            <input type="checkbox" id="menu" />
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="Menú">
+            </label>
+            <nav class="navbar">
+                <div class="menu-1">
+                    <ul>
+                        <li>
+                            <div class="socials">
+                                <span><</span>
+                                <a href="index.html">Volver</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <img class="logo-2" src="img/logo.png" alt="Logo">
+                <div class="menu-2">
+                    <ul></ul>
+                    <div class="socials">
+                        <div class="tooltip">
+                            <a href="../vista_cliente/carrito2.html">
+                                <div class="social">
+                                    <img src="img/carrito.svg" alt="Carrito">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Carrito de Compras</div>
+                        </div>
+                        <div class="tooltip">
+                            <a href="../vista_cliente/user.html">
+                                <div class="social">
+                                    <img src="img/usuario.svg" alt="Usuario">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Perfil</div>
+                        </div>
+                        <div class="tooltip">
+                            <a href="../vista_cliente/favorito.html">
+                                <div class="social">
+                                    <img src="img/fav.png" alt="Favoritos">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Favoritos</div>
+                        </div>
+                        <div class="tooltip">
+                            <a href="../index.html">
+                                <div class="social">
+                                    <img src="img/salir.png" alt="Salir">
+                                </div>
+                            </a>
+                            <div class="tooltiptext">Salir</div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- fin menu -->
+    </header>
+
+    <section>
+        <main>
+            <div class="container">
+                <h1>Tus Pedidos</h1>
+                
+                <table class="shopping-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Aquí se añadirá el producto seleccionado -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </section>
+
+    <footer class="footer container">
+        <img class="logo-2" src="img/logo.png" alt="">
+        <div class="links" >
+            <h4>Epa la Arepa</h4>
+            <p>Copyright &copy; <span id="year"></span> - BOGOTA Todos los derechos son reservados </p>
+        </div>
+
+
+        <div class="links" >
+            <h4>¡Siguenos!</h4>
+            <div class="socials">
+                <a href="https://www.facebook.com/epaarepacolombia/">
+                    <div class="social">
+                        <img src="img/s1.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/epalarepa_/">
+                    <div class="social">
+                        <img src="img/s2.svg" alt="">
+                    </div>
+                </a>
+                <a href="https://x.com/epaLarepa">
+                    <div class="social">
+                        <img src="img/s3.svg" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        // Obtener el año actual
+        var currentYear = new Date().getFullYear();
+        // Colocar el año en el elemento con el id "year"
+        document.getElementById("year").textContent = currentYear;
+    </script>
+
+
+
+
+
+   
+    <script>
+        let productos = {
+            'hambu': { 
+                img: 'img/hambu.png',
+                nombre: 'Promo del Día', 
+                estado: 'Completado', 
+            },
+            'salchi': { 
+                img: 'img/salshi.png',
+                nombre: 'Sorpresa Doble',  
+                estado: 'En proceso', 
+            },
+            'plat': { 
+                img: 'img/plat.png', 
+                nombre: 'Plato Especial',
+                estado: 'Pendiente', 
+            },
+            
+            // Añadir más productos aquí
+            'h1': { 
+                img: 'img/h1.png',
+                nombre: 'Hamburgesa De la Casa', 
+                estado: 'Completado', 
+            },
+            'h2': { 
+                img: 'img/h2.png', 
+                nombre: 'Hamburgesa Super', 
+                estado: 'En proceso', 
+            },
+            'h3': { 
+                img: 'img/h5.png', 
+                nombre: 'Hamburgesa Especial', 
+                estado: 'Pendiente', 
+            },
+            'h4': { 
+                img: 'img/h3.png',
+                nombre: 'Hamburgesa Tradicional',  
+                estado: 'Completado', 
+            },
+            'h5': { 
+                img: 'img/h4.png', 
+                nombre: 'Hamburgesa Hawaiana',
+                estado: 'En proceso', 
+            },
+            'h6': { 
+                img: 'img/h6.png', 
+                nombre: 'Hamburgesa Epa',
+                estado: 'Pendiente', 
+            },
+            
+            // Añadir más productos aquí
+            'a7': { 
+                img: 'img/a9.png', 
+                nombre: 'Arepa Especial',
+                estado: 'Completado', 
+            },
+            'a8': { 
+                img: 'img/a10.png',
+                nombre: 'Arepa Ranchera', 
+                estado: 'En proceso', 
+            },
+            'a9': { 
+                img: 'img/a3.png', 
+                nombre: 'Arepa Mixta', 
+                estado: 'Pendiente', 
+            },
+            'a10': { 
+                img: 'img/a4.png', 
+                nombre: 'Arepa Con Todo', 
+                estado: 'Completado', 
+            },
+            'a11': { 
+                img: 'img/a11.png', 
+                nombre: 'Arepa Super Especial', 
+                estado: 'En proceso', 
+            },
+            'a12': { 
+                img: 'img/a6.png', 
+                nombre: 'Arepa Criolla', 
+                estado: 'Pendiente', 
+            },
+            'a13': { 
+                img: 'img/a7.png', 
+                nombre: 'Arepa Pollo y champiñon', 
+                estado: 'Completado', 
+            },
+            'a14': { 
+                img: 'img/a8.png', 
+                nombre: 'Arepa Burguer', 
+                estado: 'En proceso', 
+            },
+            'a15': { 
+                img: 'img/a1.png', 
+                nombre: 'Arepa Epa', 
+                estado: 'Pendiente', 
+            },
+            'a16': { 
+                img: 'img/a3.png', 
+                nombre: 'Arepa Callejera', 
+                estado: 'Completado', 
+            },
+            'a17': { 
+                img: 'img/a11.png', 
+                nombre: 'Arepa Del Campo', 
+                estado: 'En proceso', 
+            },
+            'a18': { 
+                img: 'img/a12.png',
+                nombre: 'Arepa Hawaiana',  
+                estado: 'Pendiente', 
+            },
+            
+            // Añadir más productos aquí
+            'sa19': { 
+                img: 'img/sa1.png',
+                nombre: 'Salchipapa Clasica',
+                estado: 'Completado', 
+            },
+            'sa20': { 
+                img: 'img/sa2.png', 
+                nombre: 'Salchipapa Especial',
+                estado: 'En proceso', 
+            },
+            'sa21': { 
+                img: 'img/sa3.png', 
+                nombre: 'Salchipapa Con Todo',
+                estado: 'Pendiente', 
+            },
+            'sa22': { 
+                img: 'img/sa1.png',
+                nombre: 'Salchipapa Ranchero', 
+                estado: 'Completado', 
+            },
+            
+            // Añadir más productos aquí
+            'p23': { 
+                img: 'img/p1.png',
+                nombre: 'Perro Caliente Con Todo',  
+                estado: 'En proceso', 
+            },
+            'p24': { 
+                img: 'img/p3.png', 
+                nombre: 'Perro Caliente Especial',  
+                estado: 'Pendiente', 
+            },
+            'p25': { 
+                img: 'img/p2.png',
+                nombre: 'Perro Caliente Hawaiano',   
+                estado: 'Completado', 
+            },
+            'p26': { 
+                img: 'img/p4.png', 
+                nombre: 'Perro Caliente Clasico',   
+                estado: 'En proceso', 
+            },
+            
+            // Añadir más productos aquí
+            'pa27': { 
+                img: 'img/pa1.png', 
+                nombre: 'Patacon Burguer',  
+                estado: 'Pendiente', 
+            },
+            'pa28': { 
+                img: 'img/pa2.png',
+                nombre: 'Patacon Con Todo',   
+                estado: 'Completado', 
+            },
+            'pa29': { 
+                img: 'img/p3.png', 
+                nombre: 'Patacon Mixto',  
+                estado: 'En proceso', 
+            },
+            'pa30': { 
+                img: 'img/pa1.png', 
+                nombre: 'Patacon Mixto',  
+                estado: 'Patacon Ranchero', 
+            },
+            
+            // Añadir más productos aquí
+            'v31': { 
+                img: 'img/v1.png',
+                nombre: 'Mazorcada con todo',  
+                estado: 'Completado', 
+            },
+            'v32': { 
+                img: 'img/v2.png',
+                nombre: 'Mazorcada Sencilla',  
+                estado: 'En proceso', 
+            },
+            'v33': { 
+                img: 'img/v3.png',
+                nombre: 'Chorizo',  
+                estado: 'Pendiente', 
+            },
+            'v34': { 
+                img: 'img/v5.png', 
+                nombre: 'Chori perro de la casa 1', 
+                estado: 'Completado', 
+            },
+            'v35': { 
+                img: 'img/v4.png', 
+                nombre: 'Chori perro de la casa 2', 
+                estado: 'En proceso', 
+            },
+            
+            // Añadir más productos aquí
+            'b36': {
+                img: 'img/b1.png',
+                nombre: 'Cocacola',
+                estado: 'Completado',
+            },
+            'b37': {
+                img: 'img/b2.png',
+                nombre: 'Postobon - Manzana',
+                estado: 'Completado', 
+            },
+            'b38': {
+                img: 'img/b3.png',
+                nombre: 'Postobon - Colombiana',
+                estado: 'Completado',
+            },
+            'b39': {
+                img: 'img/b4.png',
+                nombre: 'Pepsi',
+                estado: 'Completado',
+            },
+            'b40': {
+                img: 'img/b5.png',
+                nombre: 'Cuatro',
+                estado: 'Completado',
+            },
+        };
+    
+    
+        // Mostrar productos en la página
+        function mostrarProductos() {
+            const contenedorProductos = document.getElementById('productos');
+    
+            for (let clave in productos) {
+                const producto = productos[clave];
+    
+                // Crear un contenedor para cada producto
+                const divProducto = document.createElement('div');
+                divProducto.className = 'producto';
+                divProducto.id = `producto-${clave}`;
+    
+                // Crear y añadir la imagen del producto
+                const imgProducto = document.createElement('img');
+                imgProducto.src = producto.img;
+                divProducto.appendChild(imgProducto);
+    
+                // Crear y añadir el estado del producto (sin la palabra "Estado:")
+                const estadoProducto = document.createElement('p');
+                estadoProducto.textContent = `${producto.estado}`;
+                divProducto.appendChild(estadoProducto);
+    
+                // Añadir el contenedor del producto al contenedor principal
+                contenedorProductos.appendChild(divProducto);
+            }
+    
+        }
+    
+        // Ejecutar la función para mostrar los productos cuando la página cargue
+        document.addEventListener('DOMContentLoaded', mostrarProductos);
+    
+        // Función para eliminar un producto del carrito
+        function removeFromCart(productId) {
+            // Obtener el carrito del localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Eliminar el producto del carrito
+            cart = cart.filter(id => id !== productId);
+            
+            // Actualizar el carrito en el localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Actualizar la vista del carrito
+            document.getElementById('table-body').innerHTML = '';
+            cart.forEach(id => {
+                const productInfo = productos[id];
+                if (productInfo) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><img src="${productInfo.img}" alt="${productInfo.nombre}" class="product-image"></td>
+                        <td>${productInfo.nombre}</td>
+                        <td>${productInfo.estado}</td>
+                    `;
+                    document.getElementById('table-body').appendChild(row);
+                }
+            });
+        }
+
+        // Mostrar productos en el carrito al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const tableBody = document.getElementById('table-body');
+
+            if (cart.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="3">No hay productos en el historial.</td></tr>';
+            } else {
+                cart.forEach(productId => {
+                    const productInfo = productos[productId];
+                    if (productInfo) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><img src="${productInfo.img}" alt="${productInfo.nombre}" class="product-image"></td>
+                            <td>${productInfo.nombre}</td>
+                            <td>${productInfo.estado}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    }
+                });
+            }
+        });
+
+    </script>
+    
+    
+</body>
+</html>

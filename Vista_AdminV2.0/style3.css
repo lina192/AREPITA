@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #edb97f;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #edb97f ;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+button.editar {
+    background-color: #edb97f; /* Verde para el botón de editar */
+    color: white;
+}
+
+button.editar:hover {
+    background-color: #ffd4a2;
+}
+
+button.eliminar {
+    background-color: #79552d; /* Rojo para el botón de eliminar */
+    color: white;
+}
+
+button.eliminar:hover {
+    background-color: #79562d79;
+}

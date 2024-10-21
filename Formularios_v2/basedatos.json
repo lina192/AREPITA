@@ -1,0 +1,14 @@
+{
+  "EpaArepaRellena": {
+    "Cliente": [
+      {
+        "nombre_cli": "Cole ",
+        "apellido_cli": "Palmer",
+        "correo_cli": "comecarne@gmail.com",
+        "telefono_cli": "34154154151",
+        "contraseña_cli": "123456",
+        "id_cliente": 1
+      }
+    ]
+  }
+}

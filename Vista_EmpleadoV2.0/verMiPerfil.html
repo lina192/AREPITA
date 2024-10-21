@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="verperfil.css">
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>¡Bienvenido Empleado!</h1>
+        </div>
+        <div class="menu-links">
+            <a href="/Vista_AdminV2.0/actualizarUsua.html" class="menu-item">Ver Clientes</a>
+            <a href="/Vista_EmpleadoV2.0/verMiPerfil.html" class="menu-item">Ver mi perfil</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="toggle-menu">
+                    <button id="menu-toggle" class="btn">☰ Menú</button>
+                </div>
+                <img src="img/logo.png" alt="Logo">
+                <div class="user">
+                    <a href="index.html" class="btn">Pedidos</a>
+                    <a href="estado.html" class="btn">Estado</a>
+                    <a href="codigo.html" class="btn">Ver Codigo</a>
+                    <a href="/index.html" class="btn">Salir</a>
+                    <a href="/Vista_EmpleadoV2.0/verMiPerfil.html" class="btn">Ver mi perfil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-2">
+            <div class="profile-box">
+                <h3>Mi Perfil</h3>
+                <form id="profile-form">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" disabled>
+
+                    <label for="surname">Apellido:</label>
+                    <input type="text" id="surname" name="surname" disabled>
+
+                    <label for="phone">Teléfono:</label>
+                    <input type="text" id="phone" name="phone" disabled>
+
+                    <label for="email">Correo:</label>
+                    <input type="email" id="email" name="email" disabled>
+
+                    <button type="button" id="edit-btn">Editar</button>
+                    <button type="submit" id="save-btn" style="display:none;">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const editButton = document.getElementById('edit-btn');
+            const saveButton = document.getElementById('save-btn');
+            const profileForm = document.getElementById('profile-form');
+
+            // Obtener el ID del domiciliario desde la cookie
+            const clientId = getCookie('clientId');
+
+            // Función para obtener el valor de una cookie por nombre
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            // Obtener la información del perfil del domiciliario
+            fetch(`/api/domiciliarios/${clientId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data) {
+                        document.getElementById('name').value = data.nombre;
+                        document.getElementById('surname').value = data.apellido;
+                        document.getElementById('phone').value = data.telefono;
+                        document.getElementById('email').value = data.correo;
+                    } else {
+                        alert('Error al cargar los datos del perfil');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al cargar los datos del perfil');
+                });
+
+            // Habilitar campos para edición
+            editButton.addEventListener('click', function () {
+                document.getElementById('name').disabled = false;
+                document.getElementById('surname').disabled = false;
+                document.getElementById('phone').disabled = false;
+                document.getElementById('email').disabled = false;
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline-block';
+            });
+
+            // Guardar los datos del perfil
+            profileForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const updatedProfile = {
+                    nombre: document.getElementById('name').value,
+                    apellido: document.getElementById('surname').value,
+                    telefono: document.getElementById('phone').value,
+                    correo: document.getElementById('email').value
+                };
+
+                // Enviar los datos actualizados al servidor
+                fetch(`/api/domiciliarios/${clientId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedProfile)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Perfil actualizado con éxito');
+                        window.location.href = '/Vista_EmpleadoV2.0/index.html';
+                    } else {
+                        alert('Error al actualizar el perfil');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al actualizar el perfil');
+                });
+            });
+        });
+    </script>
+    <script src="menu.js"></script>
+</body>
+
+</html>

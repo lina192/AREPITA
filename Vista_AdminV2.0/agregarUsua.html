@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+    <link rel="stylesheet" href="style4.css"> <!-- Asegúrate de tener el CSS adecuado -->
+    <style>
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Nuevo Usuario</h2>
+        <form id="registroForm">
+            <label for="nombres">Nombre:</label>
+            <input type="text" id="nombres" name="nombres" minlength="2" maxlength="50" required>
+
+            <label for="apellidos">Apellido:</label>
+            <input type="text" id="apellidos" name="apellidos" minlength="2" maxlength="50" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol" required>
+                <option value="cliente">Cliente</option>
+                <option value="mesero">Mesero</option>
+                <option value="domiciliario">Domiciliario</option>
+                <option value="administrador">Administrador</option>
+            </select>
+
+            <button type="submit">Registrar</button>
+        </form>
+        <p id="mensaje"></p>
+    </div>
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const datos = Object.fromEntries(formData.entries());
+
+            // Generar contraseña automáticamente
+            const generatedPassword = Math.random().toString(36).slice(-8); // Genera una contraseña aleatoria de 8 caracteres
+            datos.contraseña = generatedPassword; // Añade la contraseña generada a los datos
+
+            try {
+                const response = await fetch('/guardar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                const mensajeElement = document.getElementById('mensaje');
+                if (response.ok) {
+                    mensajeElement.textContent = 'Usuario registrado con éxito';
+                    mensajeElement.className = 'success'; // Aplicar clase para éxito
+                    // Recargar la página después de un breve momento
+                    setTimeout(() => {
+                        location.reload(); // Recargar la página
+                    }, 2000);
+                } else {
+                    const errorText = await response.text();
+                    mensajeElement.textContent = `Error: ${errorText}`;
+                    mensajeElement.className = 'error'; // Aplicar clase para error
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('mensaje').textContent = 'Ocurrió un error al procesar la solicitud.';
+                document.getElementById('mensaje').className = 'error'; // Aplicar clase para error
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Empleado Panel</title>
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>¡Bienvenido Empleado!</h1>
+        </div>
+        <div class="menu-links">
+            <a href="/Vista_AdminV2.0/actualizarUsua.html" class="menu-item">Ver Clientes</a>
+            <!-- Añadido "Ver mi perfil" aquí -->
+            <a href="/Vista_EmpleadoV2.0/verMiPerfil.html" class="menu-item">Ver mi perfil</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="toggle-menu">
+                    <button id="menu-toggle" class="btn">☰ Menú</button>
+                </div>
+                <img src="img/logo.png" alt="Logo">
+                <div class="user">
+                    <a href="index.html" class="btn">Pedidos</a>
+                    <a href="estado.html" class="btn">Estado</a>
+                    <a href="codigo.html" class="btn">Ver Codigo</a>
+                    <a href="/index.html" class="btn">Salir</a>
+            
+                </div>
+            </div>
+        </div>
+
+        <div class="content-2">
+            <div class="orders-box">
+                <h3>Lista de Pedidos</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Felix Lorenzo</td>
+                            <td>2024-09-10</td>
+                            <td>$40.000</td>
+                            <td>Pendiente</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Cristopher Bang</td>
+                            <td>2024-09-10</td>
+                            <td>$28.000</td>
+                            <td>En Proceso</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Rodri Gomez</td>
+                            <td>2024-09-10</td>
+                            <td>$50.000</td>
+                            <td>Completado</td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Marina Perez</td>
+                            <td>2024-09-10</td>
+                            <td>$60.000</td>
+                            <td>En proceso</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="menu.js"></script>
+
+</body>
+
+</html>

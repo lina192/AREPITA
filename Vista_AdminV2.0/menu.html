@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Panel de Administrador</title>
+</head>
+
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>¡Bienvenido Administrador!</h1>
+        </div>
+        <div class="menu-links">
+            <a href="/Vista_AdminV2.0/agregarUsua.html" class="menu-item">Agregar Usuarios</a>
+            <a href="/Vista_AdminV2.0/actualizarUsua.html" class="menu-item">Ver Usuarios</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="toggle-menu">
+                    <button id="menu-toggle" class="btn">☰ Menú</button>
+                </div>
+                <img src="img/logo.png" alt="Logo">
+                <div class="user">
+                    <a href="index.html" class="btn">Pedidos</a>
+                    <a href="index.html" class="btn">Volver</a>
+                    <a href="Agregarmenu.html" class="btn">Agregar Menú</a>
+                    <a href="/index.html" class="btn">Salir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-2">
+            <div class="orders-box">
+                <h3>Menú</h3>
+                <div class="entries-controls">
+                    <label for="entries">Mostrar</label>
+                    <select id="entries">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                    </select>
+                    <span>entradas por página</span>
+                </div>
+                <input type="text" id="search" placeholder="Buscar...">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="producto-tbody">
+                        <!-- Los productos se insertarán aquí -->
+                    </tbody>
+                </table>
+                <div class="pagination-info">
+                    <p id="pagination-text">Mostrando 1 a 5 de 5 entradas</p>
+                    <div class="pagination-controls">
+                        <a href="#" id="first">Primero</a>
+                        <a href="#" id="previous">Anterior</a>
+                        <span id="page-number">1</span>
+                        <a href="#" id="next">Siguiente</a>
+                        <a href="#" id="last">Último</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="app.js"></script>
+        <script src="menu.js"></script>
+        <script>
+            let currentPage = 1;
+            let rowsPerPage = 5; // Valor por defecto
+            const tbody = document.getElementById('producto-tbody');
+            const paginationText = document.getElementById('pagination-text');
+            const pageNumber = document.getElementById('page-number');
+
+            // Lógica para obtener productos y mostrarlos en la tabla
+            fetch('/api/productos')
+                .then(response => response.json())
+                .then(productos => {
+                    // Almacena los productos globalmente para su uso en paginación
+                    window.productos = productos;
+                    displayRows();
+                })
+                .catch(error => console.error('Error al obtener productos:', error));
+
+            // Función para mostrar filas según la página actual y entradas por página
+            function displayRows() {
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+                const rows = window.productos.slice(start, end); // Filtra los productos según la página actual
+
+                // Limpia el cuerpo de la tabla
+                tbody.innerHTML = '';
+
+                // Agrega las filas correspondientes a la tabla
+                rows.forEach(producto => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${producto.id_producto}</td>
+                        <td>${producto.tipo}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>$${producto.precio}</td>
+                        <td><a href="editarMenu.html"><img src="img/actu.png" alt="Actualizar"></a></td>
+                        <td><img src="img/eli.png" alt="Eliminar"></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                // Actualiza la información de paginación
+                paginationText.innerText = `Mostrando ${start + 1} a ${Math.min(end, window.productos.length)} de ${window.productos.length} entradas`;
+                pageNumber.innerText = currentPage;
+
+                // Muestra u oculta los controles de paginación
+                document.getElementById('previous').style.display = currentPage > 1 ? '' : 'none';
+                document.getElementById('next').style.display = currentPage * rowsPerPage < window.productos.length ? '' : 'none';
+                document.getElementById('first').style.display = currentPage > 1 ? '' : 'none';
+                document.getElementById('last').style.display = currentPage * rowsPerPage < window.productos.length ? '' : 'none';
+            }
+
+            // Actualiza las filas por página basado en la opción seleccionada
+            document.getElementById('entries').addEventListener('change', function() {
+                rowsPerPage = parseInt(this.value);
+                currentPage = 1;
+                displayRows();
+            });
+
+            // Funcionalidad de búsqueda
+            document.getElementById('search').addEventListener('keyup', function() {
+                const searchText = this.value.toLowerCase();
+                const filteredProducts = window.productos.filter(producto => 
+                    producto.descripcion.toLowerCase().includes(searchText)
+                );
+
+                // Resetea el número de la página actual y muestra los productos filtrados
+                currentPage = 1;
+                window.productos = filteredProducts;
+                displayRows();
+            });
+
+            // Controles de paginación
+            document.getElementById('first').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentPage = 1;
+                displayRows();
+            });
+
+            document.getElementById('previous').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayRows();
+                }
+            });
+
+            document.getElementById('next').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentPage * rowsPerPage < window.productos.length) {
+                    currentPage++;
+                    displayRows();
+                }
+            });
+
+            document.getElementById('last').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentPage = Math.ceil(window.productos.length / rowsPerPage);
+                displayRows();
+            });
+
+            // Inicializa la visualización
+            displayRows();
+        </script>
+    </div>
+</body>
+
+</html>

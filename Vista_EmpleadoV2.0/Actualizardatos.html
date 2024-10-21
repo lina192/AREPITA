@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>Actualizar Datos</title>
+</head>
+<body>
+
+    <div class="registro">
+        
+        <img src="img/logo.png" class="logo" width="105" height="105" alt="logo">
+        <h1>Actualizar Datos</h1>
+        <form action="" method="">
+        
+            <label for="nombres">Nombres</label>
+            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese sus nombres" required maxlength="50" pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios">
+
+            <label for="apellidos">Apellidos</label>
+            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos" required maxlength="50" pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios">
+
+            <label for="telefono">Teléfono</label>
+            <input class="controls" type="number" name="telefono" id="telefono" placeholder="Ingrese su número de contacto" required maxlength="15">
+
+            <label for="correo">Correo</label>
+            <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo" required maxlength="100">
+
+            <label for="contraseña">Contraseña</label>
+            <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese una contraseña" required maxlength="20">
+            
+            
+        
+            <input type="submit" value="Actualizar">
+
+        </form> 
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (!id) {
+                alert('ID de usuario no proporcionado');
+                window.location.href = '/Vista_EmpleadoV2.0/Actualizardatos.html'; //
+                return;
+            }
+
+            fetch(`/api/usuarios/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        alert('Usuario no encontrado');
+                        window.location.href = '/Vista_EmpleadoV2.0/Actualizardatos.html'; //
+                        return;
+                    }
+
+                    const usuario = data[0];
+                    document.getElementById('user-id').value = usuario.id_usuario;
+                    document.getElementById('nombre').value = usuario.nombre;
+                    document.getElementById('apellido').value = usuario.apellido;
+                    document.getElementById('telefono').value = usuario.telefono;
+                    document.getElementById('correo').value = usuario.correo;
+                    document.getElementById('contraseña').value = ''; // No mostrar contraseña por seguridad
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos del usuario:', error);
+                    alert('Error al obtener los datos del usuario');
+                });
+
+            document.getElementById('editar-usuario-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const id = document.getElementById('user-id').value;
+                const nombre = document.getElementById('nombre').value;
+                const apellido = document.getElementById('apellido').value;
+                const telefono = document.getElementById('telefono').value;
+                const correo = document.getElementById('correo').value;
+                const contraseña = document.getElementById('contraseña').value;
+
+                fetch(`/api/usuarios/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nombre, apellido, telefono, correo, contraseña})
+                })
+                .then(response => response.text()) // Cambiado a text() para capturar texto en caso de error
+                .then(text => {
+                    if (text === 'Usuario actualizado con éxito') {
+                        console.log('Datos actualizados:', text);
+                        alert('Usuario actualizado con éxito');
+                        window.location.href = '/Vista_EmpleadoV2.0/Actualizardatos.html'; // Redirige a la página deseada
+                    } else {
+                        throw new Error(text);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al actualizar el usuario:', error);
+                    alert('Error al actualizar el usuario: ' + error.message);
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>
